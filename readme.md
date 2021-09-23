@@ -4,4 +4,4 @@
 
 #### Ciclo 3 UdeA
 
-Repositorio para el proyecto del Ciclo 3
+Repositorio para el proyecto del Ciclo 3.
