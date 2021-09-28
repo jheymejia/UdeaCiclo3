@@ -50,3 +50,8 @@
     color:#0d6efd;
     text-decoration: underline;
 }
+@import url("./assets/css/jquery.dataTables.min.css");
+div.dataTables_wrapper {
+    width: 800px;
+    margin: 0 auto;
+}

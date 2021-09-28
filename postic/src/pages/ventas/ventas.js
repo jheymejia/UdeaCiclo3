@@ -1,32 +1,39 @@
+
 import React from "react";
 
-import '../../assets/css/jquery.dataTables.min.css';
 
-import './table_ventas.css';
+//Bootstrap and jQuery libraries
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'jquery/dist/jquery.min.js';
 
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables"
+import "datatables.net-dt/css/jquery.dataTables.min.css"
+import $ from 'jquery'; 
+class Ventas extends React.Component {
 
-export default function Ventas() {
+     render(){
     return (
 
         <div className="Ventas">
 
-            <table id="example" className="display nowrap" >
+            <table id="example" className="display nowrap"  >
                 <thead>
                     <tr>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                        <th>Extn.</th>
-                        <th>E-mail</th>
+                        <th>Valor total</th>
+                        <th>Nombre Productos</th>
+                        <th>Cantidad de Productos</th>
+                        <th>Precio de Productos</th>
+                        <th>Fecha de Venta</th>
+                        <th>Numero de identficacion cliente</th>
+                        <th>Nombre Completo Cliente</th>
+                        <th>Nombre Completo del Vendedor</th>
+                        <th>Estado de Venta</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Tiger</td>
+              
                         <td>Nixon</td>
                         <td>System Architect</td>
                         <td>Edinburgh</td>
@@ -35,9 +42,10 @@ export default function Ventas() {
                         <td>$320,800</td>
                         <td>5421</td>
                         <td>t.nixon@datatables.net</td>
+                        <td>Cancelada</td>
                     </tr>
                     <tr>
-                        <td>Garrett</td>
+                       
                         <td>Winters</td>
                         <td>Accountant</td>
                         <td>Tokyo</td>
@@ -46,9 +54,10 @@ export default function Ventas() {
                         <td>$170,750</td>
                         <td>8422</td>
                         <td>g.winters@datatables.net</td>
+                        <td>Cancelada</td>
                     </tr>
                     <tr>
-                        <td>Ashton</td>
+                        
                         <td>Cox</td>
                         <td>Junior Technical Author</td>
                         <td>San Francisco</td>
@@ -57,9 +66,10 @@ export default function Ventas() {
                         <td>$86,000</td>
                         <td>1562</td>
                         <td>a.cox@datatables.net</td>
+                        <td>Cancelada</td>
                     </tr>
                     <tr>
-                        <td>Cedric</td>
+                       
                         <td>Kelly</td>
                         <td>Senior Javascript Developer</td>
                         <td>Edinburgh</td>
@@ -68,9 +78,10 @@ export default function Ventas() {
                         <td>$433,060</td>
                         <td>6224</td>
                         <td>c.kelly@datatables.net</td>
+                        <td>Cancelada</td>
                     </tr>
                     <tr>
-                        <td>Airi</td>
+                      
                         <td>Satou</td>
                         <td>Accountant</td>
                         <td>Tokyo</td>
@@ -79,9 +90,10 @@ export default function Ventas() {
                         <td>$162,700</td>
                         <td>5407</td>
                         <td>a.satou@datatables.net</td>
+                        <td>Cancelada</td>
                     </tr>
                     <tr>
-                        <td>Brielle</td>
+                        
                         <td>Williamson</td>
                         <td>Integration Specialist</td>
                         <td>New York</td>
@@ -90,9 +102,10 @@ export default function Ventas() {
                         <td>$372,000</td>
                         <td>4804</td>
                         <td>b.williamson@datatables.net</td>
+                        <td>Entregada</td>
                     </tr>
                     <tr>
-                        <td>Herrod</td>
+                        
                         <td>Chandler</td>
                         <td>Sales Assistant</td>
                         <td>San Francisco</td>
@@ -101,9 +114,10 @@ export default function Ventas() {
                         <td>$137,500</td>
                         <td>9608</td>
                         <td>h.chandler@datatables.net</td>
+                        <td>Entregada</td>
                     </tr>
                     <tr>
-                        <td>Rhona</td>
+                       
                         <td>Davidson</td>
                         <td>Integration Specialist</td>
                         <td>Tokyo</td>
@@ -112,9 +126,10 @@ export default function Ventas() {
                         <td>$327,900</td>
                         <td>6200</td>
                         <td>r.davidson@datatables.net</td>
+                        <td>Entregada</td>
                     </tr>
                     <tr>
-                        <td>Colleen</td>
+                        
                         <td>Hurst</td>
                         <td>Javascript Developer</td>
                         <td>San Francisco</td>
@@ -123,9 +138,10 @@ export default function Ventas() {
                         <td>$205,500</td>
                         <td>2360</td>
                         <td>c.hurst@datatables.net</td>
+                        <td>Entregada</td>
                     </tr>
                     <tr>
-                        <td>Sonya</td>
+                        
                         <td>Frost</td>
                         <td>Software Engineer</td>
                         <td>Edinburgh</td>
@@ -134,9 +150,10 @@ export default function Ventas() {
                         <td>$103,600</td>
                         <td>1667</td>
                         <td>s.frost@datatables.net</td>
+                        <td>Entregada</td>
                     </tr>
                     <tr>
-                        <td>Jena</td>
+                       
                         <td>Gaines</td>
                         <td>Office Manager</td>
                         <td>London</td>
@@ -145,9 +162,10 @@ export default function Ventas() {
                         <td>$90,560</td>
                         <td>3814</td>
                         <td>j.gaines@datatables.net</td>
+                        <td>Entregada</td>
                     </tr>
                     <tr>
-                        <td>Quinn</td>
+                       
                         <td>Flynn</td>
                         <td>Support Lead</td>
                         <td>Edinburgh</td>
@@ -156,9 +174,10 @@ export default function Ventas() {
                         <td>$342,000</td>
                         <td>9497</td>
                         <td>q.flynn@datatables.net</td>
+                        <td>Entregada</td>
                     </tr>
                     <tr>
-                        <td>Charde</td>
+                        
                         <td>Marshall</td>
                         <td>Regional Director</td>
                         <td>San Francisco</td>
@@ -167,9 +186,10 @@ export default function Ventas() {
                         <td>$470,600</td>
                         <td>6741</td>
                         <td>c.marshall@datatables.net</td>
+                        <td>Entregada</td>
                     </tr>
                     <tr>
-                        <td>Haley</td>
+                        
                         <td>Kennedy</td>
                         <td>Senior Marketing Designer</td>
                         <td>London</td>
@@ -178,9 +198,10 @@ export default function Ventas() {
                         <td>$313,500</td>
                         <td>3597</td>
                         <td>h.kennedy@datatables.net</td>
+                        <td>Entregada</td>
                     </tr>
                     <tr>
-                        <td>Tatyana</td>
+                       
                         <td>Fitzpatrick</td>
                         <td>Regional Director</td>
                         <td>London</td>
@@ -189,6 +210,7 @@ export default function Ventas() {
                         <td>$385,750</td>
                         <td>1965</td>
                         <td>t.fitzpatrick@datatables.net</td>
+                        <td>En Proceso</td>
                     </tr>
                     <tr>
                         <td>Michael</td>
@@ -658,4 +680,15 @@ export default function Ventas() {
         </div>
     );
 }
+componentDidMount() {
 
+    $(document).ready(function () {
+        $('#example').DataTable(
+            {
+                "scrollX": true
+            }
+        );
+    });
+ }
+}
+export default Ventas;
