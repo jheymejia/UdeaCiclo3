@@ -4,6 +4,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 
 import Login from '../pages/login/login';
+import Ventas from "../pages/ventas/ventas";
 const domain = 'dev-pckqg2y3.us.auth0.com';
 const clientId = 'SyyA6duWXNNe3pZhkvRYJ3gp59oqPsQT';
 console.log(domain);
@@ -27,9 +28,11 @@ export default function AppRouter() {
                         </Auth0Provider>
                     </React.StrictMode>
                 </Route>
-                <Route exact path="/modulo-ventas">
-                    <h2>Ventas</h2>
-                </Route>
+                <Route exact path="/modulo-ventas" component={Ventas}/>
+                    
+                
+                    
+                
                 <Route exact path="/modulo-usuarios">
                     <h1>Usuarios</h1>
                 </Route>
