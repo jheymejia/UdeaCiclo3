@@ -5,6 +5,7 @@ import React from "react";
 
 import Login from '../pages/login/login';
 import Ventas from "../pages/ventas/ventas";
+import Productos from "../pages/producto/productos";
 const domain = 'dev-pckqg2y3.us.auth0.com';
 const clientId = 'SyyA6duWXNNe3pZhkvRYJ3gp59oqPsQT';
 console.log(domain);
@@ -29,10 +30,8 @@ export default function AppRouter() {
                     </React.StrictMode>
                 </Route>
                 <Route exact path="/modulo-ventas" component={Ventas}/>
+                <Route exact path="/modulo-productos" component={Productos}/>
                     
-                
-                    
-                
                 <Route exact path="/modulo-usuarios">
                     <h1>Usuarios</h1>
                 </Route>

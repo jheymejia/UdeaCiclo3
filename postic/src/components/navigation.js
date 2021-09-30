@@ -16,6 +16,9 @@ export default function Navigation(){
                     <NavLink exact to="/modulo-ventas" activeClassName="active">Ventas</NavLink>
                 </li>
                 <li>
+                    <NavLink exact to="/modulo-productos" activeClassName="active">Productos</NavLink>
+                </li>
+                <li>
                     <NavLink exact to="/login" activeClassName="active">Iniciar Sesión</NavLink>
                 </li>
             </ul>
