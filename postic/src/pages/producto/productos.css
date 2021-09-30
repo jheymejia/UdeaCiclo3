@@ -139,9 +139,11 @@ body {
 .wrapper {
   width: 100%;
   max-width: 644px;
-  margin: 30px auto;
+  margin: 30px ;
   position: relative;
   background: #fff;
+  height: 500px;
+  overflow: auto;
 }
 .product-list:before, .product-list:after {
   content: " ";
