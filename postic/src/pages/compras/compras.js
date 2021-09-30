@@ -7,14 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick.min.js";
 import "slick-carousel/slick/slick-theme.css";
-import '../producto/productos.css';
+import '../compras/compras.css';
 import 'jquery/dist/jquery.min.js';
 
 //Datatable Modules
 
 import $ from 'jquery';
 
-class Productos extends React.Component {
+class Compras extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -720,4 +720,4 @@ class Productos extends React.Component {
 
   }
 }
-export default Productos;
+export default Compras;
