@@ -27,7 +27,7 @@ class Ventas extends React.Component {
 
             <div className="Ventas" style={{ position: "relative" }}>
 
-                <table id="example" className="display nowrap"  >
+                <table id="example" className="display nowrap" style={{width:"100%"}}  >
                     <thead>
                         <tr>
                             <th style={{ display: "none" }}>id venta</th>
@@ -530,27 +530,10 @@ class Ventas extends React.Component {
                                     <input type="text" id="estado_venta" name="lastname" placeholder="Your last name.." />
                                 </div>
                             </div>
+                            <br></br>
+                            <br></br>
+                            <br></br>
 
-                            <div class="row">
-                                <div class="col-25">
-                                    <label for="country">Country</label>
-                                </div>
-                                <div class="col-75">
-                                    <select id="country" name="country">
-                                        <option value="australia">Australia</option>
-                                        <option value="canada">Canada</option>
-                                        <option value="usa">USA</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-25">
-                                    <label for="subject">Subject</label>
-                                </div>
-                                <div class="col-75">
-                                    <textarea id="subject" name="subject" placeholder="Write something.." style={{ height: "200px" }}></textarea>
-                                </div>
-                            </div>
                             <div class="row">
                                 <input type="submit" value="Submit" />
                             </div>
@@ -572,7 +555,7 @@ class Ventas extends React.Component {
     componentDidMount() {
 
        
-        var col1;
+        var id_venta;
 
         $(document).ready(function () {
             $(window).resize(function () {
@@ -600,7 +583,7 @@ class Ventas extends React.Component {
             $(".edit").on('click', function () {
                 $("#myModal").css("display", "block");
                 var currentRow = $(this).closest("tr");
-                col1 = currentRow.find("td:eq(0)").html();
+                id_venta = currentRow.find("td:eq(0)").html();
                 $("#valor_total").val(currentRow.find("td:eq(1)").html());
                 $("#nombre_producto" ).val(currentRow.find("td:eq(2)").html());
                 $("#cantidad_producto").val(currentRow.find("td:eq(3)").html());
