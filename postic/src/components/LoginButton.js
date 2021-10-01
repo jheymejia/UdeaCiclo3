@@ -5,7 +5,7 @@ const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
   return (
     <div>
-      <button onClick={() => loginWithRedirect()}>login</button>
+      <button onClick={() => loginWithRedirect()}>Acceder con cuenta de gmail</button>
     </div>
   );
 };
