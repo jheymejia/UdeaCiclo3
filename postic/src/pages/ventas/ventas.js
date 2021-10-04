@@ -17,6 +17,13 @@ class Ventas extends React.Component {
 
     return (
       <div className="Ventas" style={{ position: "relative" }}>
+        <button
+          class="btn btn-success add"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          Nueva Venta
+        </button>
         <table
           id="example"
           className="display nowrap"
@@ -765,6 +772,12 @@ class Ventas extends React.Component {
         if (!$(tr).attr("id")) {
           $(tr).attr("id", i + 1);
         }
+      });
+      $(".add").on("click", function () {
+        $("#myModal").css("display", "block");
+        $("#ocultar").on("click", function () {
+          $("#myModal").hide();
+        });
       });
       ///////////
       $(".edit").on("click", function () {
