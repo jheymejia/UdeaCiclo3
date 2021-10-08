@@ -71,7 +71,7 @@ class Ventas extends React.Component {
 
                 <div class="col-25">
                   <label for="fname">id venta</label>
-                </div>
+                </div> 
                 <div class="col-75">
                   <input type="text" id="id_venta" name="firstname" placeholder="Your name.." readonly="readonly" />
                 </div>

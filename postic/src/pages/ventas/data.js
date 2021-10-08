@@ -10,7 +10,7 @@ export default [
         Nombre_Cliente:'alberto jose',
         Nombre_Vendedor:'juan fernando',
         Estado_Venta:'cancelado'
-    },
+    }, 
     {
         id_venta :2,
         Valor_total:7000,

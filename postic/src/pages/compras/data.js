@@ -9,7 +9,7 @@ export default [
     {
       id: 2,
       nombre: 'Cuaderno',
-      precio: 800,
+      precio: 800, 
       imagen: 'https://http2.mlstatic.com/D_NQ_NP_885090-MCO44474304152_012021-O.jpg',
       idvendedor:1
     },

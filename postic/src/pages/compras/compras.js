@@ -76,7 +76,7 @@ class Compras extends React.Component {
                       <div class="box-image">
                         <a class="_content" title="articulo de baño">
                           <img  id="imagen2" class="image-main-variant"  alt="" title="" />
-                        </a>
+                        </a> 
                       </div>
                     </div>
                     <div class="box-caption text-center">
