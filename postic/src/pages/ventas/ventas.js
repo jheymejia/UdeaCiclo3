@@ -621,9 +621,25 @@ class Ventas extends React.Component {
               cerrar
             </button>
             <form action="/action_page.php">
-              <div class="row">
+            <div class="row">
+                
                 <div class="col-25">
-                  <label for="fname">First Name</label>
+                  <label for="fname">id venta</label>
+                </div>
+                <div class="col-75">
+                  <input 
+                    type="text"
+                    id="id_venta"
+                    name="firstname"
+                    placeholder="Your name.."
+                    readonly="readonly"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                
+                <div class="col-25">
+                  <label for="fname">valor total</label>
                 </div>
                 <div class="col-75">
                   <input
@@ -636,7 +652,7 @@ class Ventas extends React.Component {
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="lname">Last Name</label>
+                  <label for="lname">nombre del producto</label>
                 </div>
                 <div class="col-75">
                   <input
@@ -649,7 +665,7 @@ class Ventas extends React.Component {
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="lname">Last Name</label>
+                  <label for="lname">cantidad del producto</label>
                 </div>
                 <div class="col-75">
                   <input
@@ -662,7 +678,7 @@ class Ventas extends React.Component {
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="lname">Last Name</label>
+                  <label for="lname">precio del producto</label>
                 </div>
                 <div class="col-75">
                   <input
@@ -675,7 +691,7 @@ class Ventas extends React.Component {
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="lname">Last Name</label>
+                  <label for="lname">fecha de venta</label>
                 </div>
                 <div class="col-75">
                   <input
@@ -688,7 +704,7 @@ class Ventas extends React.Component {
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="lname">Last Name</label>
+                  <label for="lname">numero de identificacion</label>
                 </div>
                 <div class="col-75">
                   <input
@@ -701,7 +717,7 @@ class Ventas extends React.Component {
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="lname">Last Name</label>
+                  <label for="lname">nombre del cliente</label>
                 </div>
                 <div class="col-75">
                   <input
@@ -714,7 +730,7 @@ class Ventas extends React.Component {
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="lname">Last Name</label>
+                  <label for="lname">nombre del vendedor</label>
                 </div>
                 <div class="col-75">
                   <input
@@ -727,7 +743,7 @@ class Ventas extends React.Component {
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="lname">Last Name</label>
+                  <label for="lname">estado de venta</label>
                 </div>
                 <div class="col-75">
                   <input
@@ -774,6 +790,18 @@ class Ventas extends React.Component {
         }
       });
       $(".add").on("click", function () {
+        $("#id_venta").val("");
+        $("#id_venta").attr("readonly",false);
+        $("#valor_total").val("");
+        $("#nombre_producto").val("");
+        $("#cantidad_producto").val("");
+        $("#precio_producto").val("");
+        $("#fecha_venta").val("");
+        $("#numero_identificacion").val("");
+        $("#nombre_cliente").val("");
+        $("#nombre_vendedor").val("");
+        $("#estado_venta").val("");
+
         $("#myModal").css("display", "block");
         $("#ocultar").on("click", function () {
           $("#myModal").hide();
@@ -783,7 +811,8 @@ class Ventas extends React.Component {
       $(".edit").on("click", function () {
         $("#myModal").css("display", "block");
         var currentRow = $(this).closest("tr");
-        //id_venta = currentRow.find("td:eq(0)").html();
+        $("#id_venta").attr("readonly",true);
+        $("#id_venta").val(currentRow.find("td:eq(0)").html());
         $("#valor_total").val(currentRow.find("td:eq(1)").html());
         $("#nombre_producto").val(currentRow.find("td:eq(2)").html());
         $("#cantidad_producto").val(currentRow.find("td:eq(3)").html());
