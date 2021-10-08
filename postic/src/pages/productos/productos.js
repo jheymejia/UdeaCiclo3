@@ -40,7 +40,7 @@ class Productos extends React.Component {
               <td>disponible</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -56,7 +56,7 @@ class Productos extends React.Component {
               <td>disponible</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -72,7 +72,7 @@ class Productos extends React.Component {
               <td>disponible</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -88,7 +88,7 @@ class Productos extends React.Component {
               <td>disponible</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -104,7 +104,7 @@ class Productos extends React.Component {
               <td>disponible</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -115,17 +115,17 @@ class Productos extends React.Component {
           </tbody>
         </table>
 
-        <div id="myModal" class="caja">
-          <div class="container">
+        <div id="myModal" className="caja">
+          <div className="container">
             <button style={{ marginLeft: "680px" }} id="ocultar">
               cerrar
             </button>
             <form action="/action_page.php">
-              <div class="row">
-                <div class="col-25">
-                  <label for="fname">First Name</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="fname">First Name</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="nombre_producto"
@@ -134,11 +134,11 @@ class Productos extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">Last Name</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">Last Name</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="descripcion"
@@ -147,11 +147,11 @@ class Productos extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">Last Name</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">Last Name</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="valor_unitario"
@@ -160,11 +160,11 @@ class Productos extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">Last Name</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">Last Name</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="estado"
@@ -177,7 +177,7 @@ class Productos extends React.Component {
               <br></br>
               <br></br>
 
-              <div class="row">
+              <div className="row">
                 <input type="submit" value="Submit" />
               </div>
             </form>

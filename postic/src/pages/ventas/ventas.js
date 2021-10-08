@@ -1,5 +1,5 @@
 import React from "react";
-import AlertModal from "../../util/AlertModal"
+import AlertModal from "../../util/AlertModal";
 
 //Bootstrap and jQuery libraries
 
@@ -19,7 +19,7 @@ class Ventas extends React.Component {
     return (
       <div className="Ventas" style={{ position: "relative" }}>
         <button
-          class="btn btn-success add"
+          className="btn btn-success add"
           data-toggle="modal"
           data-target="#myModal"
         >
@@ -59,7 +59,7 @@ class Ventas extends React.Component {
               <td>m.house@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -80,7 +80,7 @@ class Ventas extends React.Component {
               <td>s.burks@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -101,7 +101,7 @@ class Ventas extends React.Component {
               <td>p.bartlett@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -122,7 +122,7 @@ class Ventas extends React.Component {
               <td>g.cortez@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -143,7 +143,7 @@ class Ventas extends React.Component {
               <td>m.mccray@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -164,7 +164,7 @@ class Ventas extends React.Component {
               <td>u.butler@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -185,7 +185,7 @@ class Ventas extends React.Component {
               <td>h.hatfield@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -206,7 +206,7 @@ class Ventas extends React.Component {
               <td>h.fuentes@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -227,7 +227,7 @@ class Ventas extends React.Component {
               <td>v.harrell@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -248,7 +248,7 @@ class Ventas extends React.Component {
               <td>t.mooney@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -269,7 +269,7 @@ class Ventas extends React.Component {
               <td>j.bradshaw@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -290,7 +290,7 @@ class Ventas extends React.Component {
               <td>o.liang@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -311,7 +311,7 @@ class Ventas extends React.Component {
               <td>b.nash@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -332,7 +332,7 @@ class Ventas extends React.Component {
               <td>s.yamamoto@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -353,7 +353,7 @@ class Ventas extends React.Component {
               <td>t.walton@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -374,7 +374,7 @@ class Ventas extends React.Component {
               <td>f.camacho@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -395,7 +395,7 @@ class Ventas extends React.Component {
               <td>s.baldwin@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -416,7 +416,7 @@ class Ventas extends React.Component {
               <td>z.frank@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -437,7 +437,7 @@ class Ventas extends React.Component {
               <td>z.serrano@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -458,7 +458,7 @@ class Ventas extends React.Component {
               <td>j.acosta@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -479,7 +479,7 @@ class Ventas extends React.Component {
               <td>c.stevens@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -500,7 +500,7 @@ class Ventas extends React.Component {
               <td>h.butler@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -521,7 +521,7 @@ class Ventas extends React.Component {
               <td>l.greer@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -542,7 +542,7 @@ class Ventas extends React.Component {
               <td>j.alexander@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -563,7 +563,7 @@ class Ventas extends React.Component {
               <td>s.decker@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -584,7 +584,7 @@ class Ventas extends React.Component {
               <td>m.bruce@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -605,7 +605,7 @@ class Ventas extends React.Component {
               <td>d.snider@datatables.net</td>
               <td>
                 <button
-                  class="btn btn-success edit"
+                  className="btn btn-success edit"
                   data-toggle="modal"
                   data-target="#myModal"
                 >
@@ -616,33 +616,31 @@ class Ventas extends React.Component {
           </tbody>
         </table>
 
-        <div id="myModal" class="caja">
-          <div class="container">
+        <div id="myModal" className="caja">
+          <div className="container">
             <button style={{ marginLeft: "680px" }} id="ocultar">
               cerrar
             </button>
-            <form id="form" >
-            <div class="row">
-                
-                <div class="col-25">
-                  <label for="fname">id venta</label>
+            <form id="form">
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="fname">id venta</label>
                 </div>
-                <div class="col-75">
-                  <input 
+                <div className="col-75">
+                  <input
                     type="text"
                     id="id_venta"
                     name="firstname"
                     placeholder="Your name.."
-                    readonly="readonly"
+                    readOnly="readonly"
                   />
                 </div>
               </div>
-              <div class="row">
-                
-                <div class="col-25">
-                  <label for="fname">valor total</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="fname">valor total</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="valor_total"
@@ -651,11 +649,11 @@ class Ventas extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">nombre del producto</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">nombre del producto</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="nombre_producto"
@@ -664,11 +662,11 @@ class Ventas extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">cantidad del producto</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">cantidad del producto</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="cantidad_producto"
@@ -677,11 +675,11 @@ class Ventas extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">precio del producto</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">precio del producto</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="precio_producto"
@@ -690,11 +688,11 @@ class Ventas extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">fecha de venta</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">fecha de venta</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="fecha_venta"
@@ -703,11 +701,11 @@ class Ventas extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">numero de identificacion</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">numero de identificacion</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="numero_identificacion"
@@ -716,11 +714,11 @@ class Ventas extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">nombre del cliente</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">nombre del cliente</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="nombre_cliente"
@@ -729,11 +727,11 @@ class Ventas extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">nombre del vendedor</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">nombre del vendedor</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="nombre_vendedor"
@@ -742,11 +740,11 @@ class Ventas extends React.Component {
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">estado de venta</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">estado de venta</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input
                     type="text"
                     id="estado_venta"
@@ -759,8 +757,8 @@ class Ventas extends React.Component {
               <br></br>
               <br></br>
 
-              <div class="row">
-                <input type="submit" id="enviar"  value="enviar" />
+              <div className="row">
+                <input type="submit" id="enviar" value="enviar" />
               </div>
             </form>
           </div>
@@ -769,18 +767,14 @@ class Ventas extends React.Component {
     );
   }
   componentDidMount() {
-    function handleSubmit() {
-      
-      AlertModal.mostrarMensajeExitoso(function (a,b) {
-        a="completado";
-        b="exitoso";
-      
-      });
-      console.log('You clicked submit.');
-    }
-    document.getElementById("form").onsubmit=handleSubmit();
+    const handleSubmit = function (e) {
+      e.preventDefault(); // al ser submit, evita recargarse la pagina
+      AlertModal.mostrarMensajeExitoso("completado", "exitoso");
+      document.getElementById("id-ocultar").onclick();
+    };
 
-  
+    document.getElementById("form").onsubmit = handleSubmit;
+
     //var id_venta;
 
     $(document).ready(function () {
@@ -804,7 +798,7 @@ class Ventas extends React.Component {
       });
       $(".add").on("click", function () {
         $("#id_venta").val("");
-        $("#id_venta").attr("readonly",false);
+        $("#id_venta").attr("readonly", false);
         $("#valor_total").val("");
         $("#nombre_producto").val("");
         $("#cantidad_producto").val("");
@@ -824,7 +818,7 @@ class Ventas extends React.Component {
       $(".edit").on("click", function () {
         $("#myModal").css("display", "block");
         var currentRow = $(this).closest("tr");
-        $("#id_venta").attr("readonly",true);
+        $("#id_venta").attr("readonly", true);
         $("#id_venta").val(currentRow.find("td:eq(0)").html());
         $("#valor_total").val(currentRow.find("td:eq(1)").html());
         $("#nombre_producto").val(currentRow.find("td:eq(2)").html());

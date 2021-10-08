@@ -30,7 +30,7 @@ function ActualizarUsuarios({
       <ModalBody>
         <Form className="offset-2 col-8">
           <FormGroup>
-            <Label for="selectRol">Rol</Label>
+            <Label htmlFor="selectRol">Rol</Label>
             <Input
               type="select"
               className="custom-select"
@@ -45,7 +45,7 @@ function ActualizarUsuarios({
             </Input>
           </FormGroup>
           <FormGroup>
-            <Label for="selectState">Estado</Label>
+            <Label htmlFor="selectState">Estado</Label>
             <Input
               type="select"
               className="custom-select"
