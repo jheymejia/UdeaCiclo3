@@ -769,16 +769,15 @@ class Ventas extends React.Component {
     );
   }
   componentDidMount() {
-    function handleSubmit() {
-      
-      AlertModal.mostrarMensajeExitoso(function (a,b) {
-        a="completado";
-        b="exitoso";
-      
-      });
-      console.log('You clicked submit.');
+    document.getElementById("form").addEventListener('submit', validarFormulario);
+    function validarFormulario(evento) {
+      evento.preventDefault();
+      ///validaciones
+   
+      AlertModal.mostrarMensajeExitoso("Venta","Registrada correctamente");
+      this.submit();
     }
-    document.getElementById("form").onsubmit=handleSubmit();
+  
 
   
     //var id_venta;
