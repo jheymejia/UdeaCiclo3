@@ -31,8 +31,10 @@ const AlertModal = {
       confirmButtonText,
       cancelButtonText,
     }).then((result) => {
-      if (result.isConfirmed) MySwal.fire(tituloCuadroResultado, mensajeCuadroResultado, "success"); 
-      if(result.isDenied) MySwal.fire(tituloCuadroResultado, mensajeCuadroResultado, "error" );
+      if (result.isConfirmed)
+        MySwal.fire(tituloCuadroResultado, mensajeCuadroResultado, "success");
+      if (result.isDenied)
+        MySwal.fire("Proceso Fallido", "Ocurrio un error inesperado", "error");
     }),
   mensajeTemporizado: (title, text, timer, icon) => {
     Swal.fire({ title, text, timer, icon });
