@@ -1,4 +1,5 @@
 import React from "react";
+import AlertModal from "../../util/AlertModal"
 
 //Bootstrap and jQuery libraries
 
@@ -620,7 +621,7 @@ class Ventas extends React.Component {
             <button style={{ marginLeft: "680px" }} id="ocultar">
               cerrar
             </button>
-            <form action="/action_page.php">
+            <form id="form" >
             <div class="row">
                 
                 <div class="col-25">
@@ -759,7 +760,7 @@ class Ventas extends React.Component {
               <br></br>
 
               <div class="row">
-                <input type="submit" value="Submit" />
+                <input type="submit" id="enviar"  value="enviar" />
               </div>
             </form>
           </div>
@@ -768,6 +769,18 @@ class Ventas extends React.Component {
     );
   }
   componentDidMount() {
+    function handleSubmit() {
+      
+      AlertModal.mostrarMensajeExitoso(function (a,b) {
+        a="completado";
+        b="exitoso";
+      
+      });
+      console.log('You clicked submit.');
+    }
+    document.getElementById("form").onsubmit=handleSubmit();
+
+  
     //var id_venta;
 
     $(document).ready(function () {
