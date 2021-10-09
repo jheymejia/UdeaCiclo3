@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.css";
@@ -10,12 +10,24 @@ import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 
 import $ from "jquery";
+import ProductoNuevo from "./nuevoProducto";
 class Productos extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
   render() {
     let cont = 0;
-
+    const open = () => this.setState({ isOpen: true });
+    const close = () => this.setState({ isOpen: false });
     return (
       <div className="Productos" style={{ position: "relative" }}>
+        <ProductoNuevo isOpen={this.state.isOpen} close={close} />
+        <button className="btn btn-sm btn-success" onClick={open}>
+          Nuevo producto
+        </button>
         <table
           id="example"
           className="display nowrap"
