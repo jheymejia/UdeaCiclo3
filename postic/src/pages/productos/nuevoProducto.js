@@ -9,6 +9,8 @@ import {
   FormGroup,
   Label,
   Input,
+  FormText
+  
 } from "reactstrap";
 
 
@@ -26,19 +28,36 @@ function ProductoNuevo({
         </div>
       </ModalHeader>
       <ModalBody>
-        <Form className="offset-2 col-8">
-        <h1>Contenido Nuevo Producto</h1> 
-         <h1>Contenido Nuevo Producto</h1>
-         <h1>Contenido Nuevo Producto</h1>
-         <h1>Contenido Nuevo Producto</h1>
-        </Form>
+      <Form className="form-control-sm">
+      <FormGroup>
+        <Label for="nombreProducto">Nombre De Producto</Label>
+        <Input type="text" name="nombreProducto" id="nombreProducto"  />
+      </FormGroup>
+      <FormGroup>
+        <Label for="descripcion">Descripcion</Label>
+        <Input type="text" name="descripcion" id="descripcion"  />
+      </FormGroup>
+      <FormGroup>
+        <Label for="valorUnitario">Valor Unitario </Label>
+        <Input type="text" name="valorUnitario" id="valorUnitario"  />
+      </FormGroup>
+      <FormGroup>
+        <Label for="estadoProducto">Estado</Label>
+        <Input type="text" name="estadoProducto" id="estadoProducto"  />
+      </FormGroup>
+      
+      
+      
+      
+      
+    </Form>
       </ModalBody>
       <ModalFooter>
         <Button className="btn-danger" onClick={close}>
           <i className="bi bi-x-circle"> Cancelar</i>
         </Button>
         <Button className="btn-success" onClick={close}>
-          <i className="bi bi-save"> Guardar Cambios</i>
+          <i clButtonassName="bi bi-save"> Guardar Cambios</i>
         </Button>
       </ModalFooter>
     </Modal>

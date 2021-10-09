@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.css";
