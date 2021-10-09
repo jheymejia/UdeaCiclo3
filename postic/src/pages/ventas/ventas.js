@@ -46,7 +46,7 @@ class Ventas extends React.Component {
           <tbody>
             {data.map((v) => {
               return (
-                <tr>
+                <tr key={v.id_venta}>
                   <td>{v.id_venta}</td>
                   <td>{v.Valor_total}</td>
                   <td>{v.Nombre_Productos}</td>

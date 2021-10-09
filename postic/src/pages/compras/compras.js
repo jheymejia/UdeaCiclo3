@@ -27,7 +27,7 @@ class Compras extends React.Component {
             <div className="product-list carousel-bazaar">
               {data.map((person) => {
                 return (
-                  <article className="box box-product">
+                  <article key={person.id} className="box box-product">
                     <div className="box-shadow">
                       <div className="box-shadow-inner">
                         <h1 className="box-heading">
@@ -132,30 +132,33 @@ class Compras extends React.Component {
             </button>
             <hr></hr>
             <table>
-              <tr>
-                <th width="30%">Nombre del cliente</th>
-                <td width="2%">:</td>
-                <td>125</td>
-              </tr>
-              <tr>
-                <th width="30%">Saldo</th>
-                <td width="2%">:</td>
-                <td>2020</td>
-              </tr>
-              <tr>
-                <th width="30%">Recargar Saldo</th>
-                <td width="2%">:</td>
-                <td>
-                  <a className="btn btn-primary">Recargar</a>
-                </td>
-              </tr>
-              <tr>
-                <th width="30%">Proceso</th>
-                <td width="2%">:</td>
-                <td>
-                  <a className="btn btn-success">Realizar Compra</a>
-                </td>
-              </tr>
+              <thead></thead>
+              <tbody>
+                <tr>
+                  <th width="30%">Nombre del cliente</th>
+                  <td width="2%">:</td>
+                  <td>125</td>
+                </tr>
+                <tr>
+                  <th width="30%">Saldo</th>
+                  <td width="2%">:</td>
+                  <td>2020</td>
+                </tr>
+                <tr>
+                  <th width="30%">Recargar Saldo</th>
+                  <td width="2%">:</td>
+                  <td>
+                    <a className="btn btn-primary">Recargar</a>
+                  </td>
+                </tr>
+                <tr>
+                  <th width="30%">Proceso</th>
+                  <td width="2%">:</td>
+                  <td>
+                    <a className="btn btn-success">Realizar Compra</a>
+                  </td>
+                </tr>
+              </tbody>
             </table>
             <hr></hr>
           </div>
