@@ -6,7 +6,7 @@ import AlertModal from "../../util/AlertModal";
 import "bootstrap/dist/css/bootstrap.css";
 import "jquery/dist/jquery.js";
 import "../ventas/ventas.css";
-import data from './data'
+import data from "./data";
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
@@ -16,10 +16,18 @@ class Ventas extends React.Component {
   render() {
     return (
       <div className="Ventas" style={{ position: "relative" }}>
-        <button className="btn btn-success add" data-toggle="modal" data-target="#myModal">
+        <button
+          className="btn btn-success add"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
           Nueva Venta
         </button>
-        <table id="example" className="display nowrap" style={{ width: "100%" }} >
+        <table
+          id="example"
+          className="display nowrap"
+          style={{ width: "100%" }}
+        >
           <thead>
             <tr>
               <th>id venta</th>
@@ -36,10 +44,10 @@ class Ventas extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {data.map(v => {
+            {data.map((v) => {
               return (
                 <tr>
-                  <td >{v.id_venta}</td>
+                  <td>{v.id_venta}</td>
                   <td>{v.Valor_total}</td>
                   <td>{v.Nombre_Productos}</td>
                   <td>{v.Cantidad_Productos}</td>
@@ -50,14 +58,17 @@ class Ventas extends React.Component {
                   <td>{v.Nombre_Vendedor}</td>
                   <td>{v.Estado_Venta}</td>
                   <td>
-                    <button className="btn btn-success edit" data-toggle="modal" data-target="#myModal">
+                    <button
+                      className="btn btn-success edit"
+                      data-toggle="modal"
+                      data-target="#myModal"
+                    >
                       Edit
                     </button>
                   </td>
                 </tr>
-              )
+              );
             })}
-
           </tbody>
         </table>
 
@@ -66,23 +77,32 @@ class Ventas extends React.Component {
             <button style={{ marginLeft: "680px" }} id="ocultar">
               cerrar
             </button>
-            <form id="form" >
+            <form id="form">
               <div className="row">
-
                 <div className="col-25">
-                  <label for="fname">id venta</label>
-                </div> 
+                  <label htmlFor="fname">id venta</label>
+                </div>
                 <div className="col-75">
-                  <input type="text" id="id_venta" name="firstname" placeholder="Your name.." readonly="readonly" />
+                  <input
+                    type="text"
+                    id="id_venta"
+                    name="firstname"
+                    placeholder="Your name.."
+                    readOnly="readonly"
+                  />
                 </div>
               </div>
               <div className="row">
-
                 <div className="col-25">
-                  <label for="fname">valor total</label>
+                  <label htmlFor="fname">valor total</label>
                 </div>
                 <div className="col-75">
-                  <input type="text" id="valor_total" name="firstname" placeholder="Your name.." />
+                  <input
+                    type="text"
+                    id="valor_total"
+                    name="firstname"
+                    placeholder="Your name.."
+                  />
                 </div>
               </div>
               <div className="row">
@@ -90,7 +110,12 @@ class Ventas extends React.Component {
                   <label htmlFor="lname">nombre del producto</label>
                 </div>
                 <div className="col-75">
-                  <input type="text" id="nombre_producto" name="lastname" placeholder="Your last name.." />
+                  <input
+                    type="text"
+                    id="nombre_producto"
+                    name="lastname"
+                    placeholder="Your last name.."
+                  />
                 </div>
               </div>
               <div className="row">
@@ -98,7 +123,12 @@ class Ventas extends React.Component {
                   <label htmlFor="lname">cantidad del producto</label>
                 </div>
                 <div className="col-75">
-                  <input type="text" id="cantidad_producto" name="lastname" placeholder="Your last name.." />
+                  <input
+                    type="text"
+                    id="cantidad_producto"
+                    name="lastname"
+                    placeholder="Your last name.."
+                  />
                 </div>
               </div>
               <div className="row">
@@ -106,7 +136,12 @@ class Ventas extends React.Component {
                   <label htmlFor="lname">precio del producto</label>
                 </div>
                 <div className="col-75">
-                  <input type="text" id="precio_producto" name="lastname" placeholder="Your last name.." />
+                  <input
+                    type="text"
+                    id="precio_producto"
+                    name="lastname"
+                    placeholder="Your last name.."
+                  />
                 </div>
               </div>
               <div className="row">
@@ -114,7 +149,12 @@ class Ventas extends React.Component {
                   <label htmlFor="lname">fecha de venta</label>
                 </div>
                 <div className="col-75">
-                  <input type="text" id="fecha_venta" name="lastname" placeholder="Your last name.." />
+                  <input
+                    type="text"
+                    id="fecha_venta"
+                    name="lastname"
+                    placeholder="Your last name.."
+                  />
                 </div>
               </div>
               <div className="row">
@@ -122,7 +162,12 @@ class Ventas extends React.Component {
                   <label htmlFor="lname">numero de identificacion</label>
                 </div>
                 <div className="col-75">
-                  <input type="text" id="numero_identificacion" name="lastname" placeholder="Your last name.." />
+                  <input
+                    type="text"
+                    id="numero_identificacion"
+                    name="lastname"
+                    placeholder="Your last name.."
+                  />
                 </div>
               </div>
               <div className="row">
@@ -130,7 +175,12 @@ class Ventas extends React.Component {
                   <label htmlFor="lname">nombre del cliente</label>
                 </div>
                 <div className="col-75">
-                  <input type="text" id="nombre_cliente" name="lastname" placeholder="Your last name.." />
+                  <input
+                    type="text"
+                    id="nombre_cliente"
+                    name="lastname"
+                    placeholder="Your last name.."
+                  />
                 </div>
               </div>
               <div className="row">
@@ -138,7 +188,12 @@ class Ventas extends React.Component {
                   <label htmlFor="lname">nombre del vendedor</label>
                 </div>
                 <div className="col-75">
-                  <input type="text" id="nombre_vendedor" name="lastname" placeholder="Your last name.." />
+                  <input
+                    type="text"
+                    id="nombre_vendedor"
+                    name="lastname"
+                    placeholder="Your last name.."
+                  />
                 </div>
               </div>
               <div className="row">
@@ -146,7 +201,12 @@ class Ventas extends React.Component {
                   <label htmlFor="lname">estado de venta</label>
                 </div>
                 <div className="col-75">
-                  <input type="text" id="estado_venta" name="lastname" placeholder="Your last name.." />
+                  <input
+                    type="text"
+                    id="estado_venta"
+                    name="lastname"
+                    placeholder="Your last name.."
+                  />
                 </div>
               </div>
               <br></br>
@@ -163,7 +223,9 @@ class Ventas extends React.Component {
     );
   }
   componentDidMount() {
-    document.getElementById("form").addEventListener('submit', validarFormulario);
+    document
+      .getElementById("form")
+      .addEventListener("submit", validarFormulario);
     function validarFormulario(evento) {
       evento.preventDefault();
       ///validaciones
@@ -224,7 +286,6 @@ class Ventas extends React.Component {
         $("#nombre_cliente").val(currentRow.find("td:eq(7)").html());
         $("#nombre_vendedor").val(currentRow.find("td:eq(8)").html());
         $("#estado_venta").val(currentRow.find("td:eq(9)").html());
-
 
         $("#ocultar").on("click", function () {
           $("#myModal").hide();

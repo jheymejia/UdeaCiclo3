@@ -22,7 +22,7 @@ function Login() {
 
           <form className="text-start">
             <div className="mb-3">
-              <label for="correo" className="form-label m-0">
+              <label htmlFor="correo" className="form-label m-0">
                 Correo Electrónico
               </label>
               <div className="input-group">
@@ -38,7 +38,7 @@ function Login() {
               </div>
             </div>
             <div className="mb-3">
-              <label for="contrasena" className="form-label m-0">
+              <label htmlFor="contrasena" className="form-label m-0">
                 Contraseña
               </label>
               <div className="input-group">
@@ -74,7 +74,7 @@ function Login() {
       <div
         className="modal fade"
         id="modalRecuperarClave"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="modalRecuperarClave"
         aria-hidden="true"
       >
