@@ -23,11 +23,13 @@ class Productos extends React.Component {
     const open = () => this.setState({ isOpen: true });
     const close = () => this.setState({ isOpen: false });
     return (
-      <div className="Productos" style={{ position: "relative" }}>
+      <div className="Productos p-5" style={{ position: "relative" }}>
+        <div className="d-flex flex-row justify-content-start">
+          <button className="btn btn-lg btn-success" onClick={open}>
+            Nuevo producto
+          </button>
+        </div>
         <ProductoNuevo isOpen={this.state.isOpen} close={close} />
-        <button className="btn btn-sm btn-success" onClick={open}>
-          Nuevo producto
-        </button>
         <table
           id="example"
           className="display nowrap"

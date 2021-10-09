@@ -22,27 +22,22 @@ export default function Usuarios() {
       </div>
       <div className="header">
         <br />
-        <form className="row">
-          <div className="row">
-            <input
-              type="text"
-              className="form-control"
-              id="busqueda"
-              placeholder="Buscar Usuario"
-            />
-          </div>
-          <div className="col-12">
-            <br />
-            <div className="d-flex flex-row justify-content-between">
-              <button className="btn-success">Nuevo Usuario</button>
+        <div className="d-flex flex-row justify-content-between my-3 me-3">
+          <form className="container">
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                id="busqueda"
+                placeholder="Buscar Usuario"
+              />
             </div>
-          </div>
-        </form>
-        <br />
+          </form>
+          {/* <button className="btn btn-md btn-success">Nuevo Usuario</button> */}
+        </div>
       </div>
-
-      <div className="body">
-        <table className="table table-bordered">
+      <div className="container">
+        <table className="table table-bordered table-responsive">
           <thead>
             <tr>
               <th scope="col">Acción</th>

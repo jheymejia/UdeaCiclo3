@@ -9,17 +9,9 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText
-  
 } from "reactstrap";
 
-
-function ProductoNuevo({
-  isOpen,
-  close
-  
-  
-}) {
+function ProductoNuevo({ isOpen, close }) {
   return (
     <Modal isOpen={isOpen}>
       <ModalHeader>
@@ -28,29 +20,24 @@ function ProductoNuevo({
         </div>
       </ModalHeader>
       <ModalBody>
-      <Form className="form-control-sm">
-      <FormGroup>
-        <Label for="nombreProducto">Nombre De Producto</Label>
-        <Input type="text" name="nombreProducto" id="nombreProducto"  />
-      </FormGroup>
-      <FormGroup>
-        <Label for="descripcion">Descripcion</Label>
-        <Input type="text" name="descripcion" id="descripcion"  />
-      </FormGroup>
-      <FormGroup>
-        <Label for="valorUnitario">Valor Unitario </Label>
-        <Input type="text" name="valorUnitario" id="valorUnitario"  />
-      </FormGroup>
-      <FormGroup>
-        <Label for="estadoProducto">Estado</Label>
-        <Input type="text" name="estadoProducto" id="estadoProducto"  />
-      </FormGroup>
-      
-      
-      
-      
-      
-    </Form>
+        <Form className="form-control-sm">
+          <FormGroup>
+            <Label htmlFor="nombreProducto">Nombre De Producto</Label>
+            <Input type="text" name="nombreProducto" id="nombreProducto" />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="descripcion">Descripcion</Label>
+            <Input type="text" name="descripcion" id="descripcion" />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="valorUnitario">Valor Unitario </Label>
+            <Input type="text" name="valorUnitario" id="valorUnitario" />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="estadoProducto">Estado</Label>
+            <Input type="text" name="estadoProducto" id="estadoProducto" />
+          </FormGroup>
+        </Form>
       </ModalBody>
       <ModalFooter>
         <Button className="btn-danger" onClick={close}>
