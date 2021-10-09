@@ -1,5 +1,5 @@
 import React from "react";
-import AlertModal from "../../util/AlertModal"
+import AlertModal from "../../util/AlertModal";
 
 //Bootstrap and jQuery libraries
 
@@ -16,7 +16,7 @@ class Ventas extends React.Component {
   render() {
     return (
       <div className="Ventas" style={{ position: "relative" }}>
-        <button class="btn btn-success add" data-toggle="modal" data-target="#myModal">
+        <button className="btn btn-success add" data-toggle="modal" data-target="#myModal">
           Nueva Venta
         </button>
         <table id="example" className="display nowrap" style={{ width: "100%" }} >
@@ -50,7 +50,7 @@ class Ventas extends React.Component {
                   <td>{v.Nombre_Vendedor}</td>
                   <td>{v.Estado_Venta}</td>
                   <td>
-                    <button class="btn btn-success edit" data-toggle="modal" data-target="#myModal">
+                    <button className="btn btn-success edit" data-toggle="modal" data-target="#myModal">
                       Edit
                     </button>
                   </td>
@@ -61,91 +61,91 @@ class Ventas extends React.Component {
           </tbody>
         </table>
 
-        <div id="myModal" class="caja">
-          <div class="container">
+        <div id="myModal" className="caja">
+          <div className="container">
             <button style={{ marginLeft: "680px" }} id="ocultar">
               cerrar
             </button>
             <form id="form" >
-              <div class="row">
+              <div className="row">
 
-                <div class="col-25">
+                <div className="col-25">
                   <label for="fname">id venta</label>
                 </div> 
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="id_venta" name="firstname" placeholder="Your name.." readonly="readonly" />
                 </div>
               </div>
-              <div class="row">
+              <div className="row">
 
-                <div class="col-25">
+                <div className="col-25">
                   <label for="fname">valor total</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="valor_total" name="firstname" placeholder="Your name.." />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">nombre del producto</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">nombre del producto</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="nombre_producto" name="lastname" placeholder="Your last name.." />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">cantidad del producto</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">cantidad del producto</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="cantidad_producto" name="lastname" placeholder="Your last name.." />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">precio del producto</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">precio del producto</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="precio_producto" name="lastname" placeholder="Your last name.." />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">fecha de venta</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">fecha de venta</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="fecha_venta" name="lastname" placeholder="Your last name.." />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">numero de identificacion</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">numero de identificacion</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="numero_identificacion" name="lastname" placeholder="Your last name.." />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">nombre del cliente</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">nombre del cliente</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="nombre_cliente" name="lastname" placeholder="Your last name.." />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">nombre del vendedor</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">nombre del vendedor</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="nombre_vendedor" name="lastname" placeholder="Your last name.." />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">estado de venta</label>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlFor="lname">estado de venta</label>
                 </div>
-                <div class="col-75">
+                <div className="col-75">
                   <input type="text" id="estado_venta" name="lastname" placeholder="Your last name.." />
                 </div>
               </div>
@@ -153,7 +153,7 @@ class Ventas extends React.Component {
               <br></br>
               <br></br>
 
-              <div class="row">
+              <div className="row">
                 <input type="submit" id="enviar" value="enviar" />
               </div>
             </form>
