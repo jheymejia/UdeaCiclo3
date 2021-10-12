@@ -21,146 +21,150 @@ class Compras extends React.Component {
   }
   render() {
     return (
-      <div className="Compras">
-        <div className="row">
-          <div className="wrapper col-6">
-            <div className="product-list carousel-bazaar">
-              {data.map((person) => {
-                return (
-                  <article key={person.id} className="box box-product">
-                    <div className="box-shadow">
-                      <div className="box-shadow-inner">
-                        <h1 className="box-heading">
-                          <a title="">80 vendidos </a>
-                        </h1>
-                        <div className="_holder">
-                          <div className="box-image">
-                            <a className="_content" title="">
-                              <img
-                                id="imagen"
-                                className="image-main-variant"
-                                alt=""
-                                title=""
-                              />
-                            </a>
-                          </div>
-                        </div>
-                        <div className="box-caption text-center">
-                          <div
-                            id="variants-gallery"
-                            className="variants-gallery-carousel"
-                          >
-                            <div className="box box-variant-image">
-                              <div className="_content">
-                                <a rel="gallery">
-                                  <img
-                                    src="https://picturesfeedo.com/slir/w64-h64/eshop-engine/data/poster/8001090234988.png"
-                                    alt=""
-                                    title=""
-                                  />
-                                </a>
-                              </div>
-                            </div>
-                            <div className="box box-variant-image">
-                              <div className="_content">
-                                <a rel="gallery">
-                                  <img
-                                    src="https://picturesfeedo.com/slir/w64-h64/eshop-engine/data/poster/8001090234988.png"
-                                    alt=""
-                                    title=""
-                                  />
-                                </a>
-                              </div>
+      <div className="Compras p-5 ">
+        <div className="row border border-dark">
+          <div className="d-flex flex-row justify-content-between align-items-center">
+            <div className="wrapper">
+              <div className="product-list carousel-bazaar">
+                {data.map((person) => {
+                  return (
+                    <article key={person.id} className="box box-product">
+                      <div className="box-shadow">
+                        <div className="box-shadow-inner">
+                          <h1 className="box-heading">
+                            <a title="">80 vendidos </a>
+                          </h1>
+                          <div className="_holder">
+                            <div className="box-image">
+                              <a className="_content" title="">
+                                <img
+                                  id="imagen"
+                                  className="image-main-variant"
+                                  alt=""
+                                  title=""
+                                />
+                              </a>
                             </div>
                           </div>
+                          <div className="box-caption text-center">
+                            <div
+                              id="variants-gallery"
+                              className="variants-gallery-carousel"
+                            >
+                              <div className="box box-variant-image">
+                                <div className="_content">
+                                  <a rel="gallery">
+                                    <img
+                                      src="https://picturesfeedo.com/slir/w64-h64/eshop-engine/data/poster/8001090234988.png"
+                                      alt=""
+                                      title=""
+                                    />
+                                  </a>
+                                </div>
+                              </div>
+                              <div className="box box-variant-image">
+                                <div className="_content">
+                                  <a rel="gallery">
+                                    <img
+                                      src="https://picturesfeedo.com/slir/w64-h64/eshop-engine/data/poster/8001090234988.png"
+                                      alt=""
+                                      title=""
+                                    />
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
 
-                          <form
-                            action="#"
-                            method="post"
-                            className="add-to-cart box-form"
-                          >
-                            <a id="agregar" className="btn btn-danger">
-                              Agregar
-                            </a>
-                          </form>
+                            <form
+                              action="#"
+                              method="post"
+                              className="add-to-cart box-form"
+                            >
+                              <a id="agregar" className="btn btn-danger">
+                                Agregar
+                              </a>
+                            </form>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <h1 className="box-heading">
-                      <p id="titulo"></p>
-                    </h1>
-                    <div className="_holder">
-                      <div className="box-image">
-                        <a className="_content" title="articulo de baño">
-                          <img
-                            id="imagen2"
-                            className="image-main-variant"
-                            alt=""
-                            title=""
-                          />
-                        </a>
+                      <h1 className="box-heading">
+                        <p id="titulo"></p>
+                      </h1>
+                      <div className="_holder">
+                        <div className="box-image">
+                          <a className="_content" title="articulo de baño">
+                            <img
+                              id="imagen2"
+                              className="image-main-variant"
+                              alt=""
+                              title=""
+                            />
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                    <div className="box-caption text-center">
-                      <span className="availability in-stock">Disponible</span>
+                      <div className="box-caption text-center">
+                        <span className="availability in-stock">
+                          Disponible
+                        </span>
 
-                      <div className="price price-discount">
-                        <span id="precio"></span>
+                        <div className="price price-discount">
+                          <span id="precio"></span>
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                );
-              })}
+                    </article>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <div className="wrapper col-5">
-            <ul
-              id="carrito"
-              className="list-group"
-              style={{ overflowY: "scroll", height: "300px" }}
-            ></ul>
-            <hr></hr>
+            <div className="wrapper">
+              <ul
+                id="carrito"
+                className="list-group"
+                style={{ overflowY: "scroll", height: "300px" }}
+              ></ul>
+              <hr></hr>
 
-            <p className="text-right">
-              Total: <span id="total"></span>
-            </p>
-            <p className="text-right">
-              Cantidad Total: <span id="cantidadtotal"></span>
-            </p>
-            <button id="boton-vaciar" className="btn btn-danger">
-              Vaciar
-            </button>
-            <hr></hr>
-            <table>
-              <thead></thead>
-              <tbody>
-                <tr>
-                  <th width="30%">Nombre del cliente</th>
-                  <td width="2%">:</td>
-                  <td>125</td>
-                </tr>
-                <tr>
-                  <th width="30%">Saldo</th>
-                  <td width="2%">:</td>
-                  <td>2020</td>
-                </tr>
-                <tr>
-                  <th width="30%">Recargar Saldo</th>
-                  <td width="2%">:</td>
-                  <td>
-                    <a className="btn btn-primary">Recargar</a>
-                  </td>
-                </tr>
-                <tr>
-                  <th width="30%">Proceso</th>
-                  <td width="2%">:</td>
-                  <td>
-                    <a className="btn btn-success">Realizar Compra</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <hr></hr>
+              <p className="text-right">
+                Total: <span id="total"></span>
+              </p>
+              <p className="text-right">
+                Cantidad Total: <span id="cantidadtotal"></span>
+              </p>
+              <button id="boton-vaciar" className="btn btn-danger">
+                Vaciar
+              </button>
+              <hr></hr>
+              <table>
+                <thead></thead>
+                <tbody>
+                  <tr>
+                    <th width="30%">Nombre del cliente</th>
+                    <td width="2%">:</td>
+                    <td>125</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Saldo</th>
+                    <td width="2%">:</td>
+                    <td>2020</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Recargar Saldo</th>
+                    <td width="2%">:</td>
+                    <td>
+                      <a className="btn btn-primary">Recargar</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Proceso</th>
+                    <td width="2%">:</td>
+                    <td>
+                      <a className="btn btn-success">Realizar Compra</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <hr></hr>
+            </div>
           </div>
         </div>
       </div>

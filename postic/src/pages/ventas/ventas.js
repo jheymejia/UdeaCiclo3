@@ -15,30 +15,32 @@ import $ from "jquery";
 class Ventas extends React.Component {
   render() {
     return (
-      <div className="Ventas" style={{ position: "relative" }}>
-        <button
-          className="btn btn-success add"
-          data-toggle="modal"
-          data-target="#myModal"
-        >
-          Nueva Venta
-        </button>
+      <div className="Ventas p-5" style={{ position: "relative" }}>
+        <div className="d-flex flex-row justify-content-end ">
+          <button
+            className="btn btn-lg btn-success add"
+            data-toggle="modal"
+            data-target="#myModal"
+          >
+            Nueva Venta
+          </button>
+        </div>
         <table
           id="example"
-          className="display nowrap"
+          className="display table-responsive nowrap"
           style={{ width: "100%" }}
         >
           <thead>
             <tr>
-              <th>id venta</th>
+              <th>Id venta</th>
               <th>Valor total</th>
-              <th>Nombre Productos</th>
-              <th>Cantidad de Productos</th>
+              <th>Producto</th>
+              <th>Cantidad</th>
               <th>Precio de Productos</th>
               <th>Fecha de Venta</th>
-              <th>Numero de identficacion cliente</th>
-              <th>Nombre Completo Cliente</th>
-              <th>Nombre Completo del Vendedor</th>
+              <th>ID cliente</th>
+              <th>Nombre Cliente</th>
+              <th>Nombre del Vendedor</th>
               <th>Estado de Venta</th>
               <th>Operacion</th>
             </tr>
@@ -80,7 +82,7 @@ class Ventas extends React.Component {
             <form id="form">
               <div className="row">
                 <div className="col-25">
-                  <label htmlFor="fname">id venta</label>
+                  <label htmlFor="fname">Id venta</label>
                 </div>
                 <div className="col-75">
                   <input
@@ -293,8 +295,10 @@ class Ventas extends React.Component {
       });
       $("#example").DataTable({
         scrollX: true,
+        "dom": '<"top"f>rt<"bottom"ipl><"clear">'
       });
     });
+
     //var table = document.getElementById("#example");
 
     //var totalRowCount = table.rows.length; // 5
