@@ -1,5 +1,5 @@
 import React from "react";
-
+import request from 'superagent';
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.css";
 import "jquery/dist/jquery.js";
@@ -201,7 +201,14 @@ class Productos extends React.Component {
     );
   }
   componentDidMount() {
-    //var id_producto;
+    request.get('http://localhost:3001/api/productos').then(
+      function (err,res) {
+        console.log(res);
+        console.log(JSON.parse(res.text));
+        
+      }
+
+    );
 
     $(document).ready(function () {
       $(window).resize(function () {

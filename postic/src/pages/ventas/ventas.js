@@ -16,11 +16,7 @@ class Ventas extends React.Component {
   render() {
     return (
       <div className="Ventas p-5" style={{ position: "relative" }}>
-<<<<<<< HEAD
         <div className="d-flex flex-row justify-content-end ">
-=======
-        <div className="d-flex flex-row justify-content-start">
->>>>>>> 41d5b448087adaa54787a454acb1b6c6f06e6148
           <button
             className="btn btn-lg btn-success add"
             data-toggle="modal"
