@@ -1,5 +1,4 @@
-import React from "react";
-import request from 'superagent';
+import React,{useState,useEffect} from "react";
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.css";
 import "jquery/dist/jquery.js";
@@ -11,25 +10,91 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 
 import $ from "jquery";
 import ProductoNuevo from "./nuevoProducto";
-class Productos extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
-  render() {
-    let cont = 0;
-    const open = () => this.setState({ isOpen: true });
-    const close = () => this.setState({ isOpen: false });
+const initialProduct={
+  idProducto:'',
+  nombreProducto:'',
+  descripcionProducto:'',
+  precioProducto:'',
+  state:''
+}
+function Productos()  {
+  const [product,setProduct]=useState(initialProduct);
+  const [isOpen,setisOpen] = useState(false);
+
+    const updateProduct=async()=>{
+      const url="http://localhost:3001/api/postic/product/list"
+      const res=await fetch(url);
+      const [newdata]=await res.json();
+      
+      setProduct({
+          idProducto:newdata._id,
+          nombreProducto:newdata.nombreProducto,
+          descripcionProducto:newdata.descripcionProducto,
+          precioProducto:newdata.precioProducto,
+          state:newdata.state
+      
+     })
+     
+    }
+    useEffect(()=>{
+      
+    $(document).ready(function () {
+      $(window).resize(function () {
+        // aquí le pasamos la clase o id de nuestro div a centrar (en este caso "caja")
+        $(".caja").css({
+          position: "absolute",
+          left: ($(window).width() - $(".caja").outerWidth()) / 2,
+          top: ($(window).height() - $(".caja").outerHeight()) / 2,
+        });
+      });
+
+      // Ejecutamos la función
+      $(window).resize();
+
+      var trs = $("#example tbody tr");
+      $.each(trs, function (i, tr) {
+        if (!$(tr).attr("id")) {
+          $(tr).attr("id", i + 1);
+        }
+      });
+      ///////////
+      $(".edit").on("click", function () {
+        $("#myModal").css("display", "block");
+        var currentRow = $(this).closest("tr");
+        //id_producto = currentRow.find("td:eq(0)").html();
+        $("#nombre_producto").val(currentRow.find("td:eq(1)").html());
+        $("#descripcion").val(currentRow.find("td:eq(2)").html());
+        $("#valor_unitario").val(currentRow.find("td:eq(3)").html());
+        $("#estado").val(currentRow.find("td:eq(4)").html());
+
+        //data = col1 + "_" + col2 + "_" + col3 + "_" + col4 + "_" + col5 + "_" + col6 + "_" + col7 + "_" + col8 + "_" + col9 + "_" + col10;
+
+        $("#ocultar").on("click", function () {
+          $("#myModal").hide();
+        });
+      });
+      $("#example").DataTable({
+        scrollX: true,
+        "dom": '<"top"f>rt<"bottom"ipl><"clear">'
+      });
+    });
+    //var table = document.getElementById("#example");
+
+    //var totalRowCount = table.rows.length; // 5
+    //var tbodyRowCount = table.tBodies[0].rows.length;//3
+
+      updateProduct();
+    },[]);
+    const open = () => setisOpen(true );
+    const close = () => setisOpen(false );  
     return (
       <div className="Productos p-5" style={{ position: "relative" }}>
-        <div className="d-flex flex-row justify-content-start">
+        <div className="d-flex flex-row justify-content-end">
           <button className="btn btn-lg btn-success" onClick={open}>
             Nuevo producto
           </button>
         </div>
-        <ProductoNuevo isOpen={this.state.isOpen} close={close} />
+        <ProductoNuevo isOpen={isOpen} close={close} />
         <table
           id="example"
           className="display nowrap"
@@ -37,21 +102,21 @@ class Productos extends React.Component {
         >
           <thead>
             <tr>
-              <th style={{ display: "none" }}>id venta</th>
+              <th style={{display:"none"}}>id producto</th>
               <th>Nombre del Producto</th>
               <th>Descripcion</th>
               <th>Valor Unitario</th>
-              <th>Estado de prducto</th>
+              <th>Estado de producto</th>
               <th>Operacion</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={{ display: "none" }}>{(cont = cont + 1)}</td>
-              <td>leche</td>
-              <td>leche descremada</td>
-              <td>2769</td>
-              <td>disponible</td>
+              <td style={{display:"none"}}>{product.idProducto}</td>
+              <td>{product.nombreProducto}</td>
+              <td>{product.descripcionProducto}</td>
+              <td>{product.precioProducto}</td>
+              <td>{ product.state ? 'Disponible' : 'Agotado'}</td>
               <td>
                 <button
                   className="btn btn-success edit"
@@ -62,70 +127,7 @@ class Productos extends React.Component {
                 </button>
               </td>
             </tr>
-            <tr>
-              <td style={{ display: "none" }}>{(cont = cont + 1)}</td>
-              <td>leche</td>
-              <td>leche descremada</td>
-              <td>2769</td>
-              <td>disponible</td>
-              <td>
-                <button
-                  className="btn btn-success edit"
-                  data-toggle="modal"
-                  data-target="#myModal"
-                >
-                  Edit
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ display: "none" }}>{(cont = cont + 1)}</td>
-              <td>leche</td>
-              <td>leche descremada</td>
-              <td>2769</td>
-              <td>disponible</td>
-              <td>
-                <button
-                  className="btn btn-success edit"
-                  data-toggle="modal"
-                  data-target="#myModal"
-                >
-                  Edit
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ display: "none" }}>{(cont = cont + 1)}</td>
-              <td>leche</td>
-              <td>leche descremada</td>
-              <td>2769</td>
-              <td>disponible</td>
-              <td>
-                <button
-                  className="btn btn-success edit"
-                  data-toggle="modal"
-                  data-target="#myModal"
-                >
-                  Edit
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ display: "none" }}>{(cont = cont + 1)}</td>
-              <td>leche</td>
-              <td>leche descremada</td>
-              <td>2769</td>
-              <td>disponible</td>
-              <td>
-                <button
-                  className="btn btn-success edit"
-                  data-toggle="modal"
-                  data-target="#myModal"
-                >
-                  Edit
-                </button>
-              </td>
-            </tr>
+            
           </tbody>
         </table>
 
@@ -199,60 +201,6 @@ class Productos extends React.Component {
         </div>
       </div>
     );
-  }
-  componentDidMount() {
-    request.get('http://localhost:3001/api/productos').then(
-      function (err,res) {
-        console.log(res);
-        console.log(JSON.parse(res.text));
-        
-      }
 
-    );
-
-    $(document).ready(function () {
-      $(window).resize(function () {
-        // aquí le pasamos la clase o id de nuestro div a centrar (en este caso "caja")
-        $(".caja").css({
-          position: "absolute",
-          left: ($(window).width() - $(".caja").outerWidth()) / 2,
-          top: ($(window).height() - $(".caja").outerHeight()) / 2,
-        });
-      });
-
-      // Ejecutamos la función
-      $(window).resize();
-
-      var trs = $("#example tbody tr");
-      $.each(trs, function (i, tr) {
-        if (!$(tr).attr("id")) {
-          $(tr).attr("id", i + 1);
-        }
-      });
-      ///////////
-      $(".edit").on("click", function () {
-        $("#myModal").css("display", "block");
-        var currentRow = $(this).closest("tr");
-        //id_producto = currentRow.find("td:eq(0)").html();
-        $("#nombre_producto").val(currentRow.find("td:eq(1)").html());
-        $("#descripcion").val(currentRow.find("td:eq(2)").html());
-        $("#valor_unitario").val(currentRow.find("td:eq(3)").html());
-        $("#estado").val(currentRow.find("td:eq(4)").html());
-
-        //data = col1 + "_" + col2 + "_" + col3 + "_" + col4 + "_" + col5 + "_" + col6 + "_" + col7 + "_" + col8 + "_" + col9 + "_" + col10;
-
-        $("#ocultar").on("click", function () {
-          $("#myModal").hide();
-        });
-      });
-      $("#example").DataTable({
-        scrollX: true,
-      });
-    });
-    //var table = document.getElementById("#example");
-
-    //var totalRowCount = table.rows.length; // 5
-    //var tbodyRowCount = table.tBodies[0].rows.length;//3
-  }
 }
 export default Productos;
