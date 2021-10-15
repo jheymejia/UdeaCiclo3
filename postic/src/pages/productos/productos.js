@@ -1,217 +1,261 @@
-import React, { useState, useEffect } from "react";
-//Bootstrap and jQuery libraries
-import "bootstrap/dist/css/bootstrap.css";
-import "jquery/dist/jquery.js";
-import "../ventas/ventas.css";
 
-//Datatable Modules
-import "datatables.net-dt/js/dataTables.dataTables";
+///hooks
+import React, { useState, useEffect } from "react";
+
+///lib
+import MaterialTable from "material-table";
+import axios from 'axios';
+import {Modal, TextField, Button} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+
+///css
+import "bootstrap/dist/css/bootstrap.css";
+import "../ventas/ventas.css";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 
-import $ from "jquery";
-import ProductoNuevo from "./nuevoProducto";
-
-const initialProduct = [];
-
-function Productos() {
-  const [product, setProduct] = useState(initialProduct);
-  const [isOpen, setisOpen] = useState(false);
-
-  const updateProduct = async () => {
-    const url = "http://localhost:3001/api/postic/product/list"
-    const res = await fetch(url);
-    const newdata = await res.json();
-    setProduct(
-      newdata.map((v, i) => {
-        let obj = {
-          idProducto: v._id,
-          nombreProducto: v.nombreProducto,
-          descripcionProducto: v.descripcionProducto,
-          precioProducto: v.precioProducto,
-          state: v.state
-        }
-        initialProduct[i] = obj;
-        return v;
-
-      })
-    );
-
-  }
-  useEffect(() => {
-    updateProduct();
-
-    $(document).ready(function () {
-      $(window).resize(function () {
-        // aquí le pasamos la clase o id de nuestro div a centrar (en este caso "caja")
-        $(".caja").css({
-          position: "absolute",
-          left: ($(window).width() - $(".caja").outerWidth()) / 2,
-          top: ($(window).height() - $(".caja").outerHeight()) / 2,
-        });
-      });
-
-      // Ejecutamos la función
-      $(window).resize();
-
-      var trs = $("#example tbody tr");
-      $.each(trs, function (i, tr) {
-        if (!$(tr).attr("id")) {
-          $(tr).attr("id", i + 1);
-        }
-      });
-      ///////////
-      $(".edit").on("click", function () {
-        $("#myModal").css("display", "block");
-        var currentRow = $(this).closest("tr");
-        //id_producto = currentRow.find("td:eq(0)").html();
-        $("#nombre_producto").val(currentRow.find("td:eq(1)").html());
-        $("#descripcion").val(currentRow.find("td:eq(2)").html());
-        $("#valor_unitario").val(currentRow.find("td:eq(3)").html());
-        $("#estado").val(currentRow.find("td:eq(4)").html());
-
-        //data = col1 + "_" + col2 + "_" + col3 + "_" + col4 + "_" + col5 + "_" + col6 + "_" + col7 + "_" + col8 + "_" + col9 + "_" + col10;
-
-        $("#ocultar").on("click", function () {
-          $("#myModal").hide();
-        });
-      });
-
-      $("#example").DataTable({
-        scrollX: true,
-        "dom": '<"top">rt<"bottom"ipl><"clear">',
-        "language": {
-          "emptyTable": " "
-        }
-      });
-    });
-    //var table = document.getElementById("#example");
-
-    //var totalRowCount = table.rows.length; // 5
-    //var tbodyRowCount = table.tBodies[0].rows.length;//3
-
-    
-  }, []);
-  const open = () => setisOpen(true);
+//component http://localhost:3001/api/postic/product/list
+/*
+const [product,SetProduct] = useState(initialProduct);
+ in body component 
+   const open = () => setisOpen(true);
   const close = () => setisOpen(false);
-  return (
-    <div className="Productos p-5" style={{ position: "relative" }}>
+
+  table id =example
+
+return 
+      <div className="Productos p-5">
+     
       <div className="d-flex flex-row justify-content-end">
         <button className="btn btn-lg btn-success" onClick={open}>
           Nuevo producto
         </button>
       </div>
+   
       <ProductoNuevo isOpen={isOpen} close={close} />
-      <table
-        id="example"
-        className="display nowrap"
-        style={{ width: "100%" }}
-      >
-        <thead>
-          <tr>
-            <th style={{ display: "none" }}>id producto</th>
-            <th>Nombre del Producto</th>
-            <th>Descripcion</th>
-            <th>Valor Unitario</th>
-            <th>Estado de producto</th>
-            <th>Operacion</th>
-          </tr>
-        </thead>
-        <tbody>
-          {product.map(v => {
 
-            return (
-              <tr key={v._id}>
-                <td style={{ display: "none" }}>{v._id}</td>
-                <td>{v.nombreProducto}</td>
-                <td>{v.descripcionProducto}</td>
-                <td>{v.precioProducto}</td>
-                <td>{v.state ? 'Disponible' : 'Agotado'}</td>
-                <td>
-                  <button
-                    className="btn btn-success edit"
-                    data-toggle="modal"
-                    data-target="#myModal"
-                  >
-                    Edit
-                  </button>
-                </td>
-              </tr>
-            );
+    </div>
+    import ProductoNuevo from "./nuevoProducto";
+*/ 
 
-          })}
+const columns= [
+  { title: 'Nombre del Producto', field: 'nombreProducto' },
+  { title: 'Descripcion', field: 'descripcionProducto' },
+  { title: 'Valor unitario)', field: 'precioProducto', type: 'numeric' },
+  { title: 'Estado del producto', field: 'state'}
+];
+const baseUrl="http://localhost:3001/api/postic/product";
 
 
-        </tbody>
-      </table>
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
+  },
+  iconos:{
+    cursor: 'pointer'
+  }, 
+  inputMaterial:{
+    width: '100%'
+  }
+}));
 
-      <div id="myModal" className="caja">
-        <div className="container">
-          <button style={{ marginLeft: "680px" }} id="ocultar">
-            cerrar
-          </button>
-          <form action="/action_page.php">
-            <div className="row">
-              <div className="col-25">
-                <label htmlFor="fname">First Name</label>
-              </div>
-              <div className="col-75">
-                <input
-                  type="text"
-                  id="nombre_producto"
-                  name="firstname"
-                  placeholder="Your name.."
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-25">
-                <label htmlFor="lname">Last Name</label>
-              </div>
-              <div className="col-75">
-                <input
-                  type="text"
-                  id="descripcion"
-                  name="lastname"
-                  placeholder="Your last name.."
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-25">
-                <label htmlFor="lname">Last Name</label>
-              </div>
-              <div className="col-75">
-                <input
-                  type="text"
-                  id="valor_unitario"
-                  name="lastname"
-                  placeholder="Your last name.."
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-25">
-                <label htmlFor="lname">Last Name</label>
-              </div>
-              <div className="col-75">
-                <input
-                  type="text"
-                  id="estado"
-                  name="lastname"
-                  placeholder="Your last name.."
-                />
-              </div>
-            </div>
-            <br></br>
-            <br></br>
-            <br></br>
 
-            <div className="row">
-              <input type="submit" value="Submit" />
-            </div>
-          </form>
-        </div>
+function Productos() {
+  const styles= useStyles();
+  const [data, setData]= useState([]);
+  const [modalInsertar, setModalInsertar]= useState(false);
+  const [modalEditar, setModalEditar]= useState(false);
+  const [modalEliminar, setModalEliminar]= useState(false);
+  const [productoSeleccionado, setproductoSeleccionado]=useState({
+    _id: "",
+    nombreProducto: "",
+    descripcionProducto: "",
+    precioProducto: "",
+    state: ""
+  })
+  const handleChange=e=>{
+    const {name, value}=e.target;
+    setproductoSeleccionado(prevState=>({
+      ...prevState,
+      [name]: value
+    }));
+  }
+
+  const peticionGet=async()=>{
+    await axios.get(baseUrl+"/list")
+    .then(response=>{
+     setData(response.data);
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+
+  const peticionPost=async()=>{
+    await axios.post(baseUrl+"/new", productoSeleccionado)
+    .then(response=>{
+      setData(data.concat(response.data));
+      abrirCerrarModalInsertar();
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+
+  const peticionPut=async()=>{
+   
+    await axios.put(baseUrl+"/update/"+productoSeleccionado._id, productoSeleccionado)
+    .then(response=>{
+      var dataNueva= data;
+      
+      dataNueva.map(producto=>{
+        if(producto._id===productoSeleccionado._id){
+          producto.nombreProducto=productoSeleccionado.nombreProducto;
+          producto.descripcionProducto=productoSeleccionado.descripcionProducto;
+          producto.precioProducto=productoSeleccionado.precioProducto;
+          producto.state=productoSeleccionado.state;
+        }
+      });
+      
+      setData(dataNueva);
+      abrirCerrarModalEditar();
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+
+  /*const peticionDelete=async()=>{
+    await axios.delete(baseUrl+"/"+productoSeleccionado.id)
+    .then(response=>{
+      setData(data.filter(producto=>producto.id!==productoSeleccionado.id));
+      abrirCerrarModalEliminar();
+    }).catch(error=>{
+      console.log(error);
+    })
+  }*/
+
+  const seleccionarproducto=(producto, caso)=>{
+    setproductoSeleccionado(producto);
+    (caso==="Editar")?abrirCerrarModalEditar()
+    :
+    abrirCerrarModalEliminar()
+  }
+
+  const abrirCerrarModalInsertar=()=>{
+    setModalInsertar(!modalInsertar);
+  }
+
+  
+  const abrirCerrarModalEditar=()=>{
+    setModalEditar(!modalEditar);
+  }
+
+  const abrirCerrarModalEliminar=()=>{
+    setModalEliminar(!modalEliminar);
+  }
+
+  useEffect(()=>{
+    peticionGet();
+  }, [])
+
+  const bodyInsertar=(
+    <div className={styles.modal}>
+      <h3>Agregar Nuevo Producto</h3>
+      <TextField className={styles.inputMaterial} label="Producto" name="nombreProducto" onChange={handleChange}/>
+      <br />
+      <TextField className={styles.inputMaterial} label="Descripcion" name="descripcionProducto" onChange={handleChange}/>          
+<br />
+<TextField className={styles.inputMaterial} label="Valor" name="precioProducto" onChange={handleChange}/>
+      <br />
+<TextField className={styles.inputMaterial} label="Estado" name="state" onChange={handleChange}/>
+      <br /><br />
+      <div align="right">
+        <Button color="primary" onClick={()=>peticionPost()}>Insertar</Button>
+        <Button onClick={()=>abrirCerrarModalInsertar()}>Cancelar</Button>
       </div>
+    </div>
+  )
+
+  const bodyEditar=(
+    <div className={styles.modal}>
+      <h3>Editar Producto</h3>
+      <TextField className={styles.inputMaterial} label="Producto" name="nombreProducto" onChange={handleChange} value={productoSeleccionado&&productoSeleccionado.producto}/>
+      <br />
+      <TextField className={styles.inputMaterial} label="Descripcion" name="descripcionProducto" onChange={handleChange} value={productoSeleccionado&&productoSeleccionado.descripcion}/>          
+<br />
+<TextField className={styles.inputMaterial} label="Valor" name="precioProducto" onChange={handleChange} value={productoSeleccionado&&productoSeleccionado.valor}/>
+      <br />
+<TextField className={styles.inputMaterial} label="Estado" name="state" onChange={handleChange} value={productoSeleccionado&&productoSeleccionado.estado}/>
+      <br /><br />
+      <div align="right">
+        <Button color="primary" onClick={()=>peticionPut()}>Editar</Button>
+        <Button onClick={()=>abrirCerrarModalEditar()}>Cancelar</Button>
+      </div>
+    </div>
+  )
+
+  /*const bodyEliminar=(
+    <div className={styles.modal}>
+      <p>Estás seguro que deseas eliminar el producto <b>{productoSeleccionado && productoSeleccionado.producto}</b>? </p>
+      <div align="right">
+        <Button color="secondary" onClick={()=>peticionDelete()}>Sí</Button>
+        <Button onClick={()=>abrirCerrarModalEliminar()}>No</Button>
+
+      </div>
+
+    </div>
+  )
+*/
+
+
+
+
+
+  return (
+    <div className="Productos p-5">
+      <br />
+      <Button onClick={()=>abrirCerrarModalInsertar()}>Insertar Producto</Button>
+      <br /><br />
+     <MaterialTable
+          columns={columns}
+          data={data}
+          title="Productos"  
+          actions={[
+            {
+              icon: 'edit',
+              tooltip: 'Editar producto',
+              onClick: (event, rowData) => seleccionarproducto(rowData, "Editar")
+            }
+          ]}
+          options={{
+            actionsColumnIndex: -1,
+          }}
+          localization={{
+            header:{
+              actions: "Acciones"
+            }
+          }}
+        />
+
+
+        <Modal
+        open={modalInsertar}
+        onClose={abrirCerrarModalInsertar}>
+          {bodyInsertar}
+        </Modal>
+
+        
+        <Modal
+        open={modalEditar}
+        onClose={abrirCerrarModalEditar}>
+          {bodyEditar}
+        </Modal>
+
     </div>
   );
 
