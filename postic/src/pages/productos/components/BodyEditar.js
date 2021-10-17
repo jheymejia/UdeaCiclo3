@@ -45,10 +45,10 @@ const BodyEditar = (
       <br />
       <br />
       <div align="right">
-        <Button color="primary" onClick={peticionPut}>
+        <Button variant="contained" color="primary" onClick={peticionPut}>
           Editar
         </Button>
-        <Button onClick={cerrarModal}>Cancelar</Button>
+        <Button variant="contained" color="secondary" onClick={cerrarModal}>Cancelar</Button>
       </div>
     </div>
   );

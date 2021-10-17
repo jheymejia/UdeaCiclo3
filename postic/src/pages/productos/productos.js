@@ -1,11 +1,13 @@
 ///hooks
 import React, { useState, useEffect } from "react";
-
+import tableIcons from "./components/TableIcons";
 ///lib
 import MaterialTable from "material-table";
 import axios from "axios";
 import { Modal, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
+
 //components
 import BodyInsertar from "./components/BodyInsertar";
 import BodyEditar from "./components/BodyEditar";
@@ -33,6 +35,21 @@ const useStyles = makeStyles((theme) => ({
   inputMaterial: {
     width: "100%",
   },
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+
 }));
 
 const columns = [
@@ -145,23 +162,26 @@ function Productos() {
   return (
     <div className="Productos p-5">
       <br />
-      <Button onClick={() => abrirCerrarModalInsertar()}>
+      <Button variant="contained" color="primary" onClick={() => abrirCerrarModalInsertar()}>
         Insertar Producto
       </Button>
       <br />
       <br />
       <MaterialTable
+            icons={{
+              ...tableIcons        
+            }}
         columns={columns}
         data={data}
         title="Productos"
         actions={[
           {
-            icon: "edit",
-            tooltip: "Editar producto",
+            icon:tableIcons.Edit,
+            tooltip: "Editar",
             onClick: (event, rowData) => seleccionarproducto(rowData),
           },
           {
-            icon: "delete",
+            icon:tableIcons.Delete,
             tooltip: "Eliminar producto",
             onClick: (event, rowData) => deleteProduct(rowData),
           },

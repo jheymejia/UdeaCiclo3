@@ -24,11 +24,13 @@ const BodyInsertar = (styles, handleChange, peticionPost, cerrarModal) => (
       onChange={handleChange}
     />
     <br />
+    <br />
+   
     <div align="right">
-      <Button color="primary" onClick={peticionPost}>
+      <Button variant="contained" color="primary" onClick={peticionPost}>
         Insertar
       </Button>
-      <Button onClick={cerrarModal}>Cancelar</Button>
+      <Button variant="contained" color="secondary" onClick={cerrarModal}>Cancelar</Button>
     </div>
   </div>
 );
