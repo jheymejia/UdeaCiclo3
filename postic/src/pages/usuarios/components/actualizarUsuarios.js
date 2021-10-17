@@ -10,15 +10,14 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import "./usuarios";
+import "../usuarios";
 
 function ActualizarUsuarios({
   isOpen,
   close,
-  rolSelected,
-  stateSelect,
-  setRolSelected,
-  setStateSelected,
+  handleChange,
+  updateUser,
+  user
 }) {
   return (
     <Modal isOpen={isOpen}>
@@ -30,32 +29,32 @@ function ActualizarUsuarios({
       <ModalBody>
         <Form className="offset-2 col-8">
           <FormGroup>
-            <Label htmlFor="selectRol">Rol</Label>
+            <Label htmlFor="rolUsuario">Rol</Label>
             <Input
               type="select"
               className="custom-select"
-              name="selectRol"
+              name="rolUsuario"
               id="selectRol"
-              value={rolSelected}
-              onChange={setRolSelected}
+              value={user.rolUsuario}
+              onChange={handleChange}
             >
-              <option value="administrador">Admin</option>
-              <option value="vendedor">Vendedor</option>
-              <option value="comprador">Comprador</option>
+              <option value="Administrador">Admininstrador</option>
+              <option value="Vendedor">Vendedor</option>
+              <option value="Cliente">Cliente</option>
             </Input>
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="selectState">Estado</Label>
+            <Label htmlFor="estadoUsuario">Estado</Label>
             <Input
               type="select"
               className="custom-select"
-              name="selectState"
+              name="estadoUsuario"
               id="selectState"
-              value={stateSelect}
-              onChange={setStateSelected}
+              value={user.estadoUsuario}
+               onChange={handleChange}
             >
-              <option value="activo">Activo</option>
-              <option value="inactivo">Inactivo</option>
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
             </Input>
           </FormGroup>
         </Form>
@@ -64,7 +63,7 @@ function ActualizarUsuarios({
         <Button className="btn-danger" onClick={close}>
           <i className="bi bi-x-circle"> Cancelar</i>
         </Button>
-        <Button className="btn-success" onClick={close}>
+        <Button className="btn-success" onClick={updateUser}>
           <i className="bi bi-save"> Guardar Cambios</i>
         </Button>
       </ModalFooter>
