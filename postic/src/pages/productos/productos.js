@@ -168,6 +168,7 @@ function Productos() {
         ]}
         options={{
           actionsColumnIndex: -1,
+          filtering: true
         }}
         localization={{
           header: {
