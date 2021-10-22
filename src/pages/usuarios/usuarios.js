@@ -18,10 +18,10 @@ import AlertModal from "../../util/AlertModal";
 
 
 const columns = [
-  { title: "Nombres del usuario", field: "nombresUsuario" },
-  { title: "Apellidos del usuario", field: "apellidosUsuario" },
+  { title: "nombreCompleto", field: "nombreCompleto" },
   { title: "Foto", field: "urlFotoUsuario" },
   { title: "Email", field: "emailUsuario" },
+  { title: "Email verificado", field: "emailVerificadoUsuario" },
   { title: "Rol", field: "rolUsuario" },
   { title: "Estado", field: "estadoUsuario" },
 ];
@@ -35,10 +35,11 @@ function usuarios() {
   const [modalEditar, setModalEditar] = useState(false);
   const [usuarioSeleccionado, setusuarioSeleccionado] = useState({
     _id: "",
-    nombresUsuario: "",
-    apellidosUsuario: "",
+    idUser: "",
+    nombreCompleto: "",
     urlFotoUsuario: "",
     emailUsuario: "",
+    emailVerificadoUsuario: "",
     rolUsuario: "",
     estadoUsuario: "",
   });
@@ -68,9 +69,10 @@ function usuarios() {
       var dataNueva = data;
       dataNueva.map((usuario) => {
         if (usuario._id === usuarioSeleccionado._id) {
-          usuario.nombresUsuario = usuarioSeleccionado.nombresUsuario;
+          usuario.nombresUsuario = usuarioSeleccionado.nombreCompleto;
           usuario.urlFotoUsuario =usuarioSeleccionado.urlFotoUsuario;
           usuario.emailUsuario = usuarioSeleccionado.emailUsuario;
+          usuario.emailVerificadoUsuario = usuarioSeleccionado.emailVerificadoUsuario;
           usuario.rolUsuario = usuarioSeleccionado.rolUsuario;
           usuario.estadoUsuario = usuarioSeleccionado.estadoUsuario;
         }

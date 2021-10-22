@@ -2,6 +2,10 @@ import app from 'firebase/compat';
 import 'firebase/auth';
 import 'firebase/database';
 
+import AlertModal from "../../util/AlertModal";
+import axios from "axios";
+
+
 const config = {
   apiKey: "AIzaSyAoTojhikXEzcCTDyzUBQLPckcDHmIihTI",
   authDomain: "postic-607ec.firebaseapp.com",
@@ -14,8 +18,73 @@ const config = {
 };
 
 class Firebase {
-  constructor() {
+  constructor(props) {
     app.initializeApp(config);
+    const baseUrl = "http://localhost:3001/api/postic/user";
+   
+    const usuarioSeleccionado = {
+      idUser: "",
+      nombreCompleto: "",
+      urlFotoUsuario: "",
+      emailUsuario: "",
+      emailVerificadoUsuario:"",
+      rolUsuario:""
+ 
+    }
+    this.state={
+      newUser : async () => {
+        try {
+          this.auth.onAuthStateChanged(authUser => {
+            if (authUser) {            
+              this.user(authUser.uid)
+                .once('value')
+                .then(snapshot => {
+                  const dbUser = snapshot.val();
+                  ///verificar que se muestre dbuser de firebase
+                  authUser = {
+                    uid: authUser.uid,
+                    displayName: authUser.displayName,
+                    photoURL: authUser.photoURL,
+                    email: authUser.email,
+                    emailVerified: authUser.emailVerified,
+                    providerData: authUser.providerData,
+                    ...dbUser
+                  };
+                  
+                  usuarioSeleccionado.idUser=authUser.uid;               
+                  usuarioSeleccionado.nombreCompleto=authUser.displayName;
+                  usuarioSeleccionado.urlFotoUsuario= " ";
+                  if(usuarioSeleccionado.urlFotoUsuario){
+                    usuarioSeleccionado.urlFotoUsuario= authUser.photoURL;
+                  }
+                  
+                  usuarioSeleccionado.emailUsuario=authUser.email;
+                  usuarioSeleccionado.emailVerificadoUsuario=authUser.emailVerified; 
+                  usuarioSeleccionado.rolUsuario="Cliente"; 
+                
+                  
+
+                           
+                }); 
+                                  
+        
+            } 
+          }
+          
+          
+          )
+          const response = await axios.post(baseUrl + "/new", usuarioSeleccionado);
+         
+          AlertModal.mostrarMensajeExitoso("Operación exitosa", response.data);
+          
+        } catch (error) {
+          //AlertModal.mostrarMensajeFallido("Operación fallida", error);
+        }
+      }
+
+    };
+
+   
 
     /* Helper */
 
@@ -28,6 +97,13 @@ class Firebase {
     this.db = app.database();
     /* Social Sign In Method Provider */
     this.googleProvider = new app.auth.GoogleAuthProvider();
+
+    
+
+  
+  }
+  componentDidMount() {
+    
   }
 
   // *** Auth API ***
@@ -47,7 +123,7 @@ class Firebase {
 
   doSendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
+      url: "https://postic-607ec.firebaseapp.com",
     });
 
   doPasswordUpdate = password =>
@@ -56,32 +132,31 @@ class Firebase {
   // *** Merge Auth and DB User API *** //
 
   onAuthUserListener = (next, fallback) =>
+   
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
         this.user(authUser.uid)
           .once('value')
           .then(snapshot => {
             const dbUser = snapshot.val();
-
-            // default empty roles
-            if (!dbUser.roles) {
-              dbUser.roles = {};
-            }
-
-            // merge auth and db user
+            ///verificar que se muestre dbuser de firebase
             authUser = {
               uid: authUser.uid,
+              displayName: authUser.displayName,
+              photoURL: authUser.photoURL,
               email: authUser.email,
               emailVerified: authUser.emailVerified,
               providerData: authUser.providerData,
-              ...dbUser,
+              ...dbUser
             };
 
             next(authUser);
           });
+          this.state.newUser();
       } else {
         fallback();
       }
+      
     });
 
   // *** User API ***

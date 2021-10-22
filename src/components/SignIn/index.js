@@ -73,13 +73,14 @@ class SignInFormBase extends Component {
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
-        />
+        required="required"/>
         <input
           name="password"
           value={password}
           onChange={this.onChange}
           type="password"
           placeholder="Password"
+          required="required"
         />
         <button disabled={isInvalid} type="submit">
           Sign In
@@ -104,7 +105,7 @@ class SignInGoogleBase extends Component {
       .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
         return this.props.firebase.user(socialAuthUser.user.uid).set({
-          username: socialAuthUser.user.displayName,
+          displayName: socialAuthUser.user.displayName,
           email: socialAuthUser.user.email,
        
         });

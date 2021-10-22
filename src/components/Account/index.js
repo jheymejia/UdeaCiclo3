@@ -22,10 +22,17 @@ const SIGN_IN_METHODS = [
 ];
 
 const AccountPage = () => (
+ 
   <AuthUserContext.Consumer>
     {authUser => (
+      
+
       <div>
-        <h1>Account: {authUser.email}</h1>
+        <h1>NOMBRE: {authUser.displayName}</h1>
+        <h1>UID: {authUser.uid}</h1>
+        <h1>PHOTOURL:{authUser.photoURL}</h1>
+        <h1>EMAILVERIFIED: {authUser.emailVerified.toString()}</h1>
+        <h1>EMAIL: {authUser.email}</h1>
         <PasswordForgetForm />
         <PasswordChangeForm />
         <LoginManagement authUser={authUser} />
