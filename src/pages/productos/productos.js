@@ -16,27 +16,52 @@ import BodyInsertar from "./components/BodyInsertar";
 import BodyEditar from "./components/BodyEditar";
 import AlertModal from "../../util/AlertModal";
 
+//auth usuario en sesion
+import app from 'firebase/compat';
+import 'firebase/auth';
+import 'firebase/database';
+const config = {
+  apiKey: "AIzaSyAoTojhikXEzcCTDyzUBQLPckcDHmIihTI",
+  authDomain: "postic-607ec.firebaseapp.com",
+  projectId: "postic-607ec",
+  storageBucket: "postic-607ec.appspot.com",
+  messagingSenderId: "554417543138",
+  appId: "1:554417543138:web:0786a102d8ca70ceed0bbb",
+  measurementId: "G-CTBCVYYNST"
+
+};
 
 const columns = [
   { title: "Nombre del Producto", field: "nombreProducto" },
   { title: "Descripcion", field: "descripcionProducto" },
-  { title: "Valor unitario)", field: "precioProducto", type: "numeric" },
+  { title: "Valor unitario", field: "precioProducto", type: "numeric" },
   { title: "Estado del producto", field: "estadoProducto" },
+
+ 
+ 
 ];
 
 function Productos() {
+  app.initializeApp(config);
   const baseUrl = "http://localhost:3001/api/postic/product";
   const styles = StyleModal();
   const [data, setData] = useState([]);
   const [modalInsertar, setModalInsertar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
   const [productoSeleccionado, setproductoSeleccionado] = useState({
-    _id: "",
+    _id:"",
     nombreProducto: "",
     descripcionProducto: "",
     precioProducto: "",
     estadoProducto: "",
+    idUser: "",
   });
+  app.auth().onAuthStateChanged(authUser => {
+    if (authUser) {
+      productoSeleccionado.idUser = authUser.uid;
+
+    }
+  })
   const handleChange = (e) => {
     const { name, value } = e.target;
     setproductoSeleccionado((prevState) => ({
@@ -49,6 +74,7 @@ function Productos() {
     try {
       const response = await axios.get(baseUrl + "/list");
       setData(response.data);
+      
     } catch (error) {
       AlertModal.mostrarMensajeFallido("Operación fallida", error);
     }
@@ -56,10 +82,14 @@ function Productos() {
 
   const newProduct = async () => {
     try {
-      const response = await axios.post(baseUrl + "/new", productoSeleccionado);
       productoSeleccionado.estadoProducto = "Disponible";
+      const response = await axios.post(baseUrl + "/new", productoSeleccionado);
+      
+
+      
       setData(data.concat(productoSeleccionado));
       AlertModal.mostrarMensajeExitoso("Operación exitosa", response.data);
+
       abrirCerrarModalInsertar();
     } catch (error) {
       AlertModal.mostrarMensajeFallido("Operación fallida", error);
@@ -133,20 +163,20 @@ function Productos() {
       <br />
       <br />
       <MaterialTable
-            icons={{
-              ...tableIcons        
-            }}
+        icons={{
+          ...tableIcons
+        }}
         columns={columns}
         data={data}
         title="Productos"
         actions={[
           {
-            icon:tableIcons.Edit,
+            icon: tableIcons.Edit,
             tooltip: "Editar",
             onClick: (event, rowData) => seleccionarproducto(rowData),
           },
           {
-            icon:tableIcons.Delete,
+            icon: tableIcons.Delete,
             tooltip: "Eliminar producto",
             onClick: (event, rowData) => deleteProduct(rowData),
           },

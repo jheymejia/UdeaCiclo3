@@ -8,28 +8,21 @@ const BodyEditar = (
   cerrarModal,
   usuarioSeleccionado
 ) => { 
+
   return (
     <div className={styles.modal}>
-      <h3>Editar Producto</h3>
+      <h3>Editar Usuario</h3>
       <TextField
         className={styles.inputMaterial}
-        label="Nombres del usuario"
-        name="nombresUsuario"
+        label="Nombre Completo"
+        name="nombreCompleto"
         onChange={handleChange}
-        value={usuarioSeleccionado.nombresUsuario}
+        value={usuarioSeleccionado.nombreCompleto}
       />
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Apellidos del usuario"
-        name="apellidosUsuario"
-        onChange={handleChange}
-        value={usuarioSeleccionado.apellidosUsuario}
-      />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Foto"
+        label="url de la foto"
         name="urlFotoUsuario"
         onChange={handleChange}
         value={usuarioSeleccionado.urlFotoUsuario}
@@ -37,15 +30,7 @@ const BodyEditar = (
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Email"
-        name="emailUsuario"
-        onChange={handleChange}
-        value={usuarioSeleccionado.emailUsuario}
-      />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Rol"
+        label="rol del usuario"
         name="rolUsuario"
         onChange={handleChange}
         value={usuarioSeleccionado.rolUsuario}
@@ -53,7 +38,7 @@ const BodyEditar = (
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Estado"
+        label="estado del usuario"
         name="estadoUsuario"
         onChange={handleChange}
         value={usuarioSeleccionado.estadoUsuario}

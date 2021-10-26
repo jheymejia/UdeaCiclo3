@@ -2,7 +2,7 @@ import app from 'firebase/compat';
 import 'firebase/auth';
 import 'firebase/database';
 
-import AlertModal from "../../util/AlertModal";
+
 import axios from "axios";
 
 
@@ -21,21 +21,26 @@ class Firebase {
   constructor(props) {
     app.initializeApp(config);
     const baseUrl = "http://localhost:3001/api/postic/user";
-   
+
+
     const usuarioSeleccionado = {
+
       idUser: "",
       nombreCompleto: "",
       urlFotoUsuario: "",
       emailUsuario: "",
-      emailVerificadoUsuario:"",
-      rolUsuario:""
- 
+      emailVerificadoUsuario: "",
+      rolUsuario: "",
+      estadoUsuario: "",
+
+
+
     }
-    this.state={
-      newUser : async () => {
+    this.state = {
+      newUser: async () => {
         try {
           this.auth.onAuthStateChanged(authUser => {
-            if (authUser) {            
+            if (authUser) {
               this.user(authUser.uid)
                 .once('value')
                 .then(snapshot => {
@@ -50,42 +55,63 @@ class Firebase {
                     providerData: authUser.providerData,
                     ...dbUser
                   };
-                  
-                  usuarioSeleccionado.idUser=authUser.uid;               
-                  usuarioSeleccionado.nombreCompleto=authUser.displayName;
-                  usuarioSeleccionado.urlFotoUsuario= " ";
-                  if(usuarioSeleccionado.urlFotoUsuario){
-                    usuarioSeleccionado.urlFotoUsuario= authUser.photoURL;
-                  }
-                  
-                  usuarioSeleccionado.emailUsuario=authUser.email;
-                  usuarioSeleccionado.emailVerificadoUsuario=authUser.emailVerified; 
-                  usuarioSeleccionado.rolUsuario="Cliente"; 
-                
-                  
 
-                           
-                }); 
-                                  
-        
-            } 
+
+
+                  usuarioSeleccionado.idUser = authUser.uid;
+                  if (authUser.displayName) {
+                  usuarioSeleccionado.nombreCompleto = authUser.displayName;
+                  }
+                  usuarioSeleccionado.urlFotoUsuario = "no tiene";
+                  if (authUser.photoURL) {
+                    usuarioSeleccionado.urlFotoUsuario = authUser.photoURL;
+                  }
+
+                  usuarioSeleccionado.emailUsuario = authUser.email;
+                  usuarioSeleccionado.emailVerificadoUsuario = authUser.emailVerified;
+                  usuarioSeleccionado.rolUsuario = "Cliente";
+                  usuarioSeleccionado.estadoUsuario = "Activo";
+
+
+
+
+                });
+
+
+            }
           }
-          
-          
+
+
           )
-          const response = await axios.post(baseUrl + "/new", usuarioSeleccionado);
-         
-          AlertModal.mostrarMensajeExitoso("Operación exitosa", response.data);
-          
+
+
+          await axios.post(baseUrl + "/new", usuarioSeleccionado);
+
         } catch (error) {
-          //AlertModal.mostrarMensajeFallido("Operación fallida", error);
+
         }
-      }
+      },
+      updatechange: async () => {
+
+        this.auth.onAuthStateChanged(authUser => {
+          if (authUser) {
+            try {
+              var regex = new RegExp("\'", "g");
+              var res = authUser.email.replace(regex, "");
+              axios.put(
+                baseUrl + "/updatechange/" + authUser.email,
+                usuarioSeleccionado
+              );
+            } catch (error) {
+
+            }
+
+          }
+        });
+
+      },
 
     };
-
-   
-
     /* Helper */
 
     this.serverValue = app.database.ServerValue;
@@ -98,12 +124,12 @@ class Firebase {
     /* Social Sign In Method Provider */
     this.googleProvider = new app.auth.GoogleAuthProvider();
 
-    
 
-  
+
+
   }
   componentDidMount() {
-    
+
   }
 
   // *** Auth API ***
@@ -132,7 +158,7 @@ class Firebase {
   // *** Merge Auth and DB User API *** //
 
   onAuthUserListener = (next, fallback) =>
-   
+
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
         this.user(authUser.uid)
@@ -152,11 +178,17 @@ class Firebase {
 
             next(authUser);
           });
-          this.state.newUser();
+          this.db.ref('users/' + authUser.uid).set({
+            displayName:authUser.displayName ,
+            email: authUser.email,
+          });
+        this.state.newUser();
+        this.state.updatechange();
+
       } else {
         fallback();
       }
-      
+
     });
 
   // *** User API ***

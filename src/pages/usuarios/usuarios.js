@@ -34,12 +34,9 @@ function usuarios() {
   //const [modalInsertar, setModalInsertar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
   const [usuarioSeleccionado, setusuarioSeleccionado] = useState({
-    _id: "",
     idUser: "",
     nombreCompleto: "",
     urlFotoUsuario: "",
-    emailUsuario: "",
-    emailVerificadoUsuario: "",
     rolUsuario: "",
     estadoUsuario: "",
   });
@@ -56,23 +53,22 @@ function usuarios() {
       const response = await axios.get(baseUrl + "/list");
       setData(response.data);
     } catch (error) {
-      AlertModal.mostrarMensajeFallido("Operación fallida", error);
+      //AlertModal.mostrarMensajeFallido("Operación fallida", error);
     }
   };
 
   const updateUser= async () => {
+
     try {
       await axios.put(
-        baseUrl + "/update/" + usuarioSeleccionado._id,
+        baseUrl + "/update/" + usuarioSeleccionado.idUser,
         usuarioSeleccionado
       );
       var dataNueva = data;
       dataNueva.map((usuario) => {
-        if (usuario._id === usuarioSeleccionado._id) {
-          usuario.nombresUsuario = usuarioSeleccionado.nombreCompleto;
+        if (usuario.idUser === usuarioSeleccionado.idUser) {
+          usuario.nombreCompleto = usuarioSeleccionado.nombreCompleto;
           usuario.urlFotoUsuario =usuarioSeleccionado.urlFotoUsuario;
-          usuario.emailUsuario = usuarioSeleccionado.emailUsuario;
-          usuario.emailVerificadoUsuario = usuarioSeleccionado.emailVerificadoUsuario;
           usuario.rolUsuario = usuarioSeleccionado.rolUsuario;
           usuario.estadoUsuario = usuarioSeleccionado.estadoUsuario;
         }
@@ -80,13 +76,13 @@ function usuarios() {
       });
 
       setData(dataNueva);
-      AlertModal.mostrarMensajeExitoso(
+      /*AlertModal.mostrarMensajeExitoso(
         "Operación Exitosa",
         "Usuario actualizado exitosamente."
-      );
+      );*/
       abrirCerrarModalEditar();
     } catch (error) {
-      AlertModal.mostrarMensajeFallido("Operación fallida", error.error);
+      /*AlertModal.mostrarMensajeFallido("Operación fallida", error.error);*/
     }
   };
 
@@ -134,11 +130,13 @@ function usuarios() {
             tooltip: "Editar",
             onClick: (event, rowData) => seleccionarusuario(rowData),
           },
+          
           {
             icon:tableIcons.Delete,
             tooltip: "Eliminar producto",
             onClick: (event, rowData) => deleteUser(rowData),
           },
+          
         ]}
         options={{
           actionsColumnIndex: -1,
